@@ -1,0 +1,538 @@
+TreatmentPlanId,ClaimReferenceNumber,PatientID,PatientFullName,ProviderID,Exemptions,Name,UDA,PatientCharge,ClaimStatus,Remarks,SubmittedOn,UdaConfirmed
+501273,60001,9864,M*********************),46,No Exemptions,Band1,1.00,26.80,Completed,,2024-11-21,1.00
+3159,60002,20444,M************************),46,No Exemptions,Band3,12.00,0.00,Completed,"Expected 2412 2024-25, Pension Credit, No treatment to justify band claimed",2024-12-02,12.00
+500850,60003,8050,C***********************),46,No Exemptions,Band1,1.00,0.00,Completed,"NHS No not used, No Ethnic Origin",2024-11-21,1.00
+499824,60004,10540,M***************************),56,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2501 2024-25, Replaced as Requested, Expected 2501 2024-25, Schedule Query",2024-12-18,1.00
+499840,60005,5458,M************************),56,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2412 2024-25, No Ethnic Origin, New Patient",2024-11-26,1.37
+499846,60006,5459,M***************************),56,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, No Ethnic Origin, New Patient",2024-11-26,1.37
+499890,60007,7633,M*************************),56,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-11-26,1.00
+499909,60008,12269,M************************),56,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2412 2024-25, NHS No not used, New Patient",2024-11-26,1.37
+499993,60009,5176,M****************************),56,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2412 2024-25, NHS No not used, No Ethnic Origin",2024-11-26,1.00
+503193,60011,9602,M*************************),56,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-11-26,1.00
+499936,60012,10532,M***************************),56,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-11-26,1.00
+500604,60013,3427,M***************************),56,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2412 2024-25, No Ethnic Origin, New Patient",2024-11-26,1.37
+500524,60014,15112,M*******************************),56,No Exemptions,Band2b,5.00,73.50,Completed,"Expected 2412 2024-25, Replaced as Requested, Expected 2412 2024-25, Schedule Query",2024-12-16,5.00
+500513,60015,15377,M************************),56,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-11-27,1.00
+500531,60016,11568,M*******************************),56,No Exemptions,Band2,3.00,73.50,Completed,"Expected 2412 2024-25, New Patient",2024-12-03,1.24
+500586,60017,3412,M******************************),56,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, NHS No not used, Universal Credit, No Ethnic Origin",2024-11-27,1.00
+500590,60018,3576,M*************************),56,No Exemptions,Band1,1.00,0.00,Received,"' - parsing error: maxLength constraint failed.
+The attribute: 'ptttl' has an invalid value according to its data type.",2024-11-27,0.00
+500435,60019,11213,M************************),54,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2412 2024-25, No Ethnic Origin, New Patient",2024-11-27,1.37
+500506,60020,12678,M************************),54,No Exemptions,Band4,1.20,0.00,Completed,"Expected 2501 2024-25, NHS No not used, No Ethnic Origin",2024-12-17,1.20
+4198,60021,2518,M*************************),54,No Exemptions,Band3,12.00,0.00,Completed,"Expected 2412 2024-25, NHS No not used, Employment Support, No Ethnic Origin",2024-11-27,12.00
+500725,60022,10800,M**************************),54,No Exemptions,Band4,1.20,0.00,Completed,"Expected 2501 2024-25, NHS No not used, No Ethnic Origin",2024-12-17,1.20
+500773,60023,15151,M***************************),54,No Exemptions,Band1,1.00,0.00,Received,"' - parsing error: maxLength constraint failed.
+The attribute: 'ptttl' has an invalid value according to its data type.",2024-11-27,0.00
+500817,60024,3701,A*************************),54,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, No Ethnic Origin, New Patient",2024-11-28,1.37
+500859,60025,15594,S*****************),54,No Exemptions,Band1,1.00,0.00,Received,"' - parsing error: maxLength constraint failed.
+The element: 'adrln'  has an invalid value according to its data type.",2024-11-28,0.00
+500863,60026,18943,M************************************),54,No Exemptions,Band1,1.00,0.00,Received,"' - parsing error: maxLength constraint failed.
+The attribute: 'ptttl' has an invalid value according to its data type.",2024-11-28,0.00
+500799,60027,6036,M**************************),46,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2412 2024-25, New Patient",2024-11-28,1.37
+500996,60028,17685,M**************************),56,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-11-28,1.00
+501038,60029,14725,M*************************),56,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-11-28,1.00
+502676,60030,247,M***************************),56,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, No Ethnic Origin, New Patient",2024-12-03,1.37
+502691,60031,3136,M**********************),56,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2412 2024-25, NHS No not used, No Ethnic Origin",2024-12-03,1.00
+502726,60032,3658,M***********************),56,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2412 2024-25, No Ethnic Origin, New Patient",2024-12-03,1.37
+4466,60033,10543,M**********************),56,No Exemptions,Band3,12.00,0.00,Completed,"Expected 2412 2024-25, Universal Credit",2024-12-03,12.00
+502950,60034,10918,M*************************),56,No Exemptions,Band4,1.20,26.80,Completed,"Expected 2501 2024-25, No Ethnic Origin",2024-12-17,1.20
+502982,60035,7005,M**********************),56,No Exemptions,Band4,1.20,26.80,Completed,Expected 2501 2024-25,2024-12-17,1.20
+503116,60036,2582,M*************************),56,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-03,1.00
+503118,60037,2580,M**************************),56,No Exemptions,Band2,3.00,0.00,Received,"' - parsing error: maxLength constraint failed.
+The attribute: 'ptttl' has an invalid value according to its data type.",2024-12-03,0.00
+503169,60038,20524,M**************************),56,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-03,1.00
+502748,60042,2776,M***************************),58,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2412 2024-25, New Patient",2024-12-03,1.37
+502834,60043,11275,M************************),58,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, NHS No not used, No Ethnic Origin",2024-12-03,1.00
+502847,60044,19314,M*************************),58,No Exemptions,Band4,1.20,0.00,Completed,"Expected 2412 2024-25, Universal Credit",2024-12-03,1.20
+503185,60045,368,M***********************),58,No Exemptions,Band4,1.20,0.00,Completed,"Expected 2412 2024-25, Universal Credit",2024-12-03,1.20
+502971,60046,7709,M**********************),58,No Exemptions,Band4,1.20,26.80,Completed,Expected 2412 2024-25,2024-12-03,1.20
+503025,60047,1652,M*************************),58,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2412 2024-25, No Ethnic Origin, New Patient",2024-12-03,1.37
+503030,60048,1539,M***************************),58,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2412 2024-25, No Ethnic Origin, New Patient",2024-12-03,1.37
+503192,60049,10053,M*************************),58,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-03,1.00
+503127,60050,4196,M**************************),58,No Exemptions,Band2,3.00,0.00,Received,"' - parsing error: maxLength constraint failed.
+The attribute: 'ptttl' has an invalid value according to its data type.",2024-12-03,0.00
+1562,60051,1507,M**************************),58,No Exemptions,Band2,3.00,73.50,Completed,"Expected 2501 2024-25, Replaced as Requested, Expected 2501 2024-25, No treatment to justify band claimed, No Ethnic Origin, Schedule Query, New Patient",2024-12-19,1.24
+502671,60052,6902,M**************************),54,No Exemptions,Band2,3.00,0.00,Completed,"Expected 2412 2024-25, No treatment to justify band claimed",2024-12-03,3.00
+1245,60053,11121,M********************************),54,No Exemptions,Band3,12.00,0.00,Completed,"Expected 2412 2024-25, Universal Credit, No Ethnic Origin",2024-12-03,12.00
+502970,60054,8889,M*************************),54,No Exemptions,Band4,1.20,26.80,Completed,"Expected 2501 2024-25, No Ethnic Origin",2024-12-17,1.20
+503112,60055,10563,M********************************),54,No Exemptions,Band1,1.00,0.00,Received,"' - parsing error: maxLength constraint failed.
+The attribute: 'ptttl' has an invalid value according to its data type.",2024-12-03,0.00
+503117,60056,10571,S*****************************),54,No Exemptions,Band1,1.00,0.00,Received,"' - parsing error: maxLength constraint failed.
+The element: 'adrln'  has an invalid value according to its data type.",2024-12-03,0.00
+503142,60057,15144,M*****************************),54,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-03,1.00
+503138,60058,15629,M*************************),54,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-03,1.00
+503130,60059,15630,M**************************),54,No Exemptions,Band1,1.00,0.00,Received,"' - parsing error: maxLength constraint failed.
+The attribute: 'ptttl' has an invalid value according to its data type.",2024-12-03,0.00
+503273,60060,16885,M****************************),56,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-03,1.00
+206,60061,5400,M************************),56,No Exemptions,Band3,12.00,319.10,Completed,"Expected 2501 2024-25, Replaced as Requested, Expected 2501 2024-25, Schedule Query",2024-12-18,12.00
+503599,60062,13269,M*************************),56,No Exemptions,Band4,1.20,0.00,Completed,"Expected 2501 2024-25, NHS No not used, Universal Credit, No Ethnic Origin",2024-12-17,1.20
+504538,60063,7595,M************************),54,No Exemptions,Band4,1.20,26.80,Completed,"Expected 2501 2024-25, NHS No not used, No Ethnic Origin",2024-12-17,1.20
+505722,60064,10496,M******************************),54,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2412 2024-25, New Patient",2024-12-03,1.37
+503574,60065,6942,M*************************),54,No Exemptions,Band4,1.20,26.80,Completed,Expected 2501 2024-25,2024-12-17,1.20
+503699,60066,19191,M*************************),54,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, Income Support",2024-12-03,1.00
+503781,60067,3623,M**************************),54,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, No Ethnic Origin, New Patient",2024-12-03,1.37
+503743,60068,3702,M***********************************),54,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2412 2024-25, No Ethnic Origin, New Patient",2024-12-03,1.37
+505726,60069,7146,M*************************),46,No Exemptions,Band4,1.20,0.00,Completed,"Expected 2501 2024-25, Income Support",2024-12-17,1.20
+1168,60070,4064,M**************************),46,No Exemptions,Band3,12.00,0.00,Completed,"Expected 2412 2024-25, Universal Credit",2024-12-03,12.00
+503732,60071,8925,M**************************),46,No Exemptions,Band1,1.00,0.00,Received,"' - parsing error: maxLength constraint failed.
+The attribute: 'ptttl' has an invalid value according to its data type.",2024-12-03,0.00
+505728,60072,8799,M************************),46,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-03,1.00
+505730,60073,2979,M************************),46,No Exemptions,Band1,1.00,0.00,Received,"' - parsing error: maxLength constraint failed.
+The attribute: 'ptttl' has an invalid value according to its data type.",2024-12-03,0.00
+503771,60074,8798,M************************),46,No Exemptions,Band1,1.00,0.00,Received,"' - parsing error: maxLength constraint failed.
+The attribute: 'ptttl' has an invalid value according to its data type.",2024-12-03,0.00
+503991,60075,5874,M******************************),56,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-03,1.00
+504501,60076,19357,M*********************),56,No Exemptions,Band2,3.00,0.00,Completed,"Expected 2412 2024-25, Universal Credit",2024-12-03,3.00
+504270,60077,17988,M***************************),56,No Exemptions,Band4,1.20,0.00,Completed,"Expected 2501 2024-25, Universal Credit",2024-12-17,1.20
+504290,60078,10113,M***********************),56,No Exemptions,Band4,1.20,26.80,Completed,Expected 2501 2024-25,2024-12-17,1.20
+504388,60079,5317,M**************************),56,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, Address/Pcode missing",2024-12-03,1.00
+504011,60080,946,M************************),58,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-03,1.00
+504109,60081,11300,M*************************),58,No Exemptions,Band3,12.00,0.00,Completed,"Expected 2412 2024-25, NHS No not used, Universal Credit, No Ethnic Origin",2024-12-03,12.00
+504306,60082,228365,M*****************************),58,No Exemptions,Band4,1.20,0.00,Completed,"Expected 2412 2024-25, No Ethnic Origin",2024-12-03,1.20
+504358,60083,13669,M************************),58,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-03,1.00
+504368,60084,14391,M**************************),58,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-03,1.00
+504472,60085,9504,M*************************************),58,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, NHS No not used, No Ethnic Origin",2024-12-03,1.00
+504467,60086,9503,M****************************************),58,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, NHS No not used, No Ethnic Origin",2024-12-03,1.00
+504498,60087,13496,M**************************),58,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-03,1.00
+504494,60088,13494,M****************************),58,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, Patient details updated",2024-12-03,1.00
+504099,60089,257,M************************),54,No Exemptions,Band2,3.00,0.00,Completed,"Expected 2412 2024-25, Pension Credit",2024-12-03,3.00
+504297,60090,4121,M***************************),54,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2412 2024-25, NHS No not used, No Ethnic Origin",2024-12-03,1.00
+504416,60091,15142,M************************),54,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, NHS No not used, No Ethnic Origin",2024-12-03,1.00
+504412,60092,7284,M*****************************),54,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, NHS No not used, No Ethnic Origin",2024-12-03,1.00
+504480,60093,10504,M***************************),54,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-03,1.00
+504513,60094,10505,M*************************),54,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-03,1.00
+504405,60095,15869,M*************************),46,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2412 2024-25, New Patient",2024-12-03,1.37
+504434,60096,15871,M*********************),46,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, Universal Credit",2024-12-03,1.00
+504457,60097,883,M**************************),46,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-03,1.00
+504445,60098,884,M******************************),46,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-03,1.00
+504624,60099,14757,M*************************),56,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-03,1.00
+4574,60100,15821,M*******************************),56,No Exemptions,Band3,12.00,319.10,Completed,"Expected 2412 2024-25, Replaced as Requested, Expected 2412 2024-25, Schedule Query",2024-12-16,12.00
+505008,60101,13476,M************************************),56,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-03,1.00
+505035,60102,9316,M************************),56,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-03,1.00
+505036,60103,995,M************************),56,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-03,1.00
+505069,60104,12549,M***************************),56,No Exemptions,Band2,3.00,0.00,Completed,Expected 2412 2024-25,2024-12-03,3.00
+505088,60105,15489,M**************************),56,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-03,1.00
+504726,60106,18172,M************************),58,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2412 2024-25, No Ethnic Origin, New Patient",2024-12-03,1.37
+504931,60107,15536,M**********************************),58,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-03,1.00
+505021,60108,14833,M*************************),58,No Exemptions,Band2,3.00,73.50,Failed,Inappropriate quantity associated with treatment code,2024-12-11,0.00
+504644,60109,9137,M****************************),57,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-03,1.00
+504646,60110,9138,M********************************),57,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-03,1.00
+504736,60111,9801,M*************************),57,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-03,1.00
+504774,60112,10513,M*********************),57,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-03,1.00
+504790,60113,4608,M***************************),57,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-03,1.00
+504872,60114,17514,M**********************************),57,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-03,1.00
+505039,60115,3265,M**************************),57,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2412 2024-25, No Ethnic Origin",2024-12-03,1.00
+505090,60116,11938,M**************************),57,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-03,1.00
+3028,60117,22280,M*************************),46,No Exemptions,Band2,3.00,73.50,Completed,Expected 2412 2024-25,2024-12-03,3.00
+3620,60118,8517,M*************************),46,No Exemptions,Band2,3.00,0.00,Completed,"Expected 2412 2024-25, Universal Credit",2024-12-03,3.00
+511531,60119,7005,M**********************),46,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-10,1.00
+504838,60120,10499,M************************),46,No Exemptions,Band2b,5.00,73.50,Failed,Inappropriate quantity associated with treatment code,2024-12-10,0.00
+511666,60121,10464,M************************),46,No Exemptions,Band1,1.00,26.80,Failed,Inappropriate quantity associated with treatment code,2024-12-17,0.00
+516570,60122,6846,M*****************************),54,No Exemptions,Band2,3.00,0.00,Completed,"Expected 2412 2024-25, New Patient",2024-12-11,1.24
+511682,60123,228491,M************************),46,No Exemptions,Band4,1.20,26.80,Completed,Expected 2501 2024-25,2024-12-18,1.20
+511694,60124,20352,M**************************),46,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-11,1.00
+517040,60125,4725,M*************************),46,No Exemptions,Band2,3.00,0.00,Completed,Expected 2412 2024-25,2024-12-11,3.00
+511709,60126,8858,M*****************************),46,No Exemptions,Band2,3.00,73.50,Completed,"Expected 2501 2024-25, Replaced as Requested, Expected 2501 2024-25, Schedule Query",2024-12-18,3.00
+511732,60127,4514,M******************),46,No Exemptions,Band2,3.00,0.00,Failed,Inappropriate quantity associated with treatment code,2024-12-11,0.00
+517041,60128,2796,M*************************),46,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-11,1.00
+517042,60129,11098,M****************************),46,No Exemptions,Band1,1.00,0.00,Failed,Inappropriate quantity associated with treatment code,2024-12-11,0.00
+504195,60136,15292,M**************************),46,No Exemptions,Band2,3.00,73.50,Completed,"Expected 2412 2024-25, NHS No not used, No Ethnic Origin",2024-12-11,3.00
+516170,60137,15516,M*************************************),46,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-11,1.00
+516235,60138,7351,M****************************),46,No Exemptions,Band2,3.00,0.00,Completed,Expected 2412 2024-25,2024-12-11,3.00
+516252,60139,16578,M*************************),46,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2412 2024-25, New Patient",2024-12-11,0.37
+516635,60140,3172,M**************************),46,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2412 2024-25, NHS No not used",2024-12-11,1.00
+516695,60141,13178,M******************************),46,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, NHS No not used, Tax Credits",2024-12-11,1.00
+516867,60142,20014,M**************************),46,No Exemptions,Band1,1.00,26.80,Failed,Inappropriate quantity associated with treatment code,2024-12-11,0.00
+516910,60143,3225,M*************************),46,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-11,1.00
+516931,60144,14922,M*************************),46,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-11,1.00
+516912,60145,2513,M**********************************),46,No Exemptions,Band1,1.00,0.00,Failed,Inappropriate quantity associated with treatment code,2024-12-11,0.00
+516934,60146,8063,M************************),46,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2412 2024-25, No Ethnic Origin, New Patient",2024-12-11,0.37
+505368,60147,1316,M***************************),58,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2412 2024-25, NHS No not used",2024-12-11,1.00
+505383,60149,14999,M****************************************),58,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-11,1.00
+505440,60150,6647,M*************************),58,No Exemptions,Band4,1.20,26.80,Failed,Inappropriate quantity associated with treatment code,2024-12-11,0.00
+505581,60151,1628,M**************************),58,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, NHS No not used, No Ethnic Origin, New Patient",2024-12-11,0.37
+505611,60152,11238,M**********************),58,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, NHS No not used",2024-12-11,1.00
+505619,60153,11240,M************************),58,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, NHS No not used",2024-12-11,1.00
+517164,60154,10344,M****************************),57,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-12,1.00
+517187,60155,10973,M*************************),57,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2412 2024-25, NHS No not used",2024-12-12,1.00
+516955,60156,4602,M*************************),56,No Exemptions,Band1,1.00,26.80,Failed,Inappropriate quantity associated with treatment code,2024-12-12,0.00
+516948,60157,2561,M****************************),56,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-12,1.00
+516918,60158,7413,M*********************************),58,No Exemptions,Band2,3.00,0.00,Completed,Expected 2412 2024-25,2024-12-12,3.00
+512475,60163,6485,M******************************),57,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-12,1.00
+4376,60164,12675,M***************************),46,No Exemptions,Band3,12.00,0.00,Completed,"Expected 2412 2024-25, Universal Credit",2024-12-12,12.00
+517298,60165,13180,M***************************),46,No Exemptions,Band2,3.00,0.00,Completed,"Expected 2412 2024-25, NHS No not used, Tax Credits, No treatment to justify band claimed",2024-12-12,3.00
+517485,60166,12514,M***********************),46,No Exemptions,Band2,3.00,73.50,Completed,Expected 2412 2024-25,2024-12-13,3.00
+517572,60167,15529,M*****************************),46,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, Universal Credit",2024-12-13,1.00
+517569,60168,15528,M*******************************),46,No Exemptions,Band1,1.00,0.00,Failed,Inappropriate quantity associated with treatment code,2024-12-13,0.00
+517606,60169,6858,M******************************),46,No Exemptions,Band3,12.00,0.00,Completed,"Expected 2412 2024-25, NHS No not used",2024-12-13,12.00
+517619,60170,19961,M****************************),46,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2412 2024-25, New Patient",2024-12-13,0.37
+518082,60171,3462,M***********************),46,No Exemptions,Band2b,5.00,0.00,Completed,"Expected 2412 2024-25, NHS No not used",2024-12-13,5.00
+505175,60173,14510,M*****************************),42,No Exemptions,Band1,1.00,26.80,Failed,Inappropriate quantity associated with treatment code,2024-12-16,0.00
+505273,60174,7274,M***************************),42,No Exemptions,Band1,1.00,0.00,Failed,Inappropriate quantity associated with treatment code,2024-12-16,0.00
+518601,60175,9000,M**************************),42,No Exemptions,Band2b,5.00,0.00,Completed,"Expected 2412 2024-25, Treatment performed on Special Leave",2024-12-16,5.00
+505284,60176,4869,M**************************),42,No Exemptions,Band2,3.00,0.00,Completed,"Expected 2412 2024-25, Treatment performed on Special Leave",2024-12-16,3.00
+505306,60177,2611,M************************),42,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2412 2024-25, Treatment performed on Special Leave",2024-12-16,1.00
+505359,60178,21109,M*********************),42,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2412 2024-25, Treatment performed on Special Leave",2024-12-16,1.00
+505458,60179,21892,M***********************),42,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2412 2024-25, Treatment performed on Special Leave",2024-12-16,1.00
+505533,60180,6027,M************************),42,No Exemptions,Band2,3.00,73.50,Completed,"Expected 2412 2024-25, No Ethnic Origin, New Patient",2024-12-16,4.24
+505574,60181,22238,M*******************************),42,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2412 2024-25, Treatment performed on Special Leave, New Patient",2024-12-16,1.37
+509217,60182,10359,M******************************),56,No Exemptions,Band2,3.00,0.00,Completed,Expected 2412 2024-25,2024-12-16,3.00
+509221,60183,4550,M******************************),56,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-16,1.00
+509550,60184,9412,M***********************************),56,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, No Ethnic Origin, New Patient",2024-12-16,1.37
+509591,60185,552,M*****************************),56,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-16,1.00
+509615,60186,3094,M**************************),56,No Exemptions,Band2,3.00,0.00,Completed,"Expected 2412 2024-25, NHS No not used, No treatment to justify band claimed",2024-12-16,3.00
+509647,60187,4412,M********************************),56,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-16,1.00
+6160,60188,13253,M**************************),56,No Exemptions,Band2,3.00,73.50,Completed,Expected 2412 2024-25,2024-12-16,3.00
+509150,60189,18117,M**************************),56,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-16,1.00
+509241,60190,12739,M******************************),58,No Exemptions,Band3,12.00,319.10,Completed,"Expected 2412 2024-25, New Patient",2024-12-16,13.24
+509387,60191,6515,M********************************),58,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-16,1.00
+509447,60192,12988,M*******************************),58,No Exemptions,Band4,1.20,0.00,Completed,Expected 2412 2024-25,2024-12-16,1.20
+509565,60193,19607,M************************),58,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, Universal Credit",2024-12-16,1.00
+509584,60194,19700,M********************),58,No Exemptions,Band3,12.00,0.00,Received,"' - parsing error: pattern constraint failed.
+The attribute: 'exrmcd' has an invalid value according to its data type.",2024-12-16,0.00
+509576,60195,19701,M**********************),58,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, Address/Pcode missing",2024-12-16,1.00
+509559,60196,4676,M**************************),58,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, Address/Pcode missing, NHS No not used",2024-12-16,1.00
+509557,60197,11109,M*************************),58,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, NHS No not used",2024-12-16,1.00
+509628,60198,6636,M************************),58,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, NHS No not used",2024-12-16,1.00
+509207,60199,5591,M******************************************),54,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2412 2024-25, NHS No not used",2024-12-16,1.00
+509461,60200,13209,M*****************************),54,No Exemptions,Band2,3.00,73.50,Completed,Expected 2412 2024-25,2024-12-16,3.00
+509489,60201,14702,M************************),54,No Exemptions,Band3,12.00,0.00,Completed,"Expected 2412 2024-25, Universal Credit",2024-12-16,12.00
+509551,60202,5461,M***************************),54,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-16,1.00
+509594,60203,12856,M*****************************),54,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-16,1.00
+509585,60204,12855,M****************************),54,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-16,1.00
+509913,60205,131,M*****************************),56,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2412 2024-25, New Patient",2024-12-16,1.37
+510045,60206,7125,M*************************),56,No Exemptions,Band4,1.20,26.80,Completed,Expected 2412 2024-25,2024-12-16,1.20
+510221,60207,6908,M***********************),56,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, Employment Support",2024-12-16,1.00
+510345,60208,10620,M*****************************),56,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-16,1.00
+510355,60209,9123,M*****************************),56,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-16,1.00
+510361,60210,10265,M*************************),56,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2412 2024-25, No Ethnic Origin",2024-12-16,1.00
+510169,60211,2467,M*************************),54,No Exemptions,Band4,1.20,26.80,Completed,Expected 2412 2024-25,2024-12-16,1.20
+4557,60212,1933,M************************),54,No Exemptions,Band3,12.00,319.10,Completed,Expected 2412 2024-25,2024-12-16,12.00
+510239,60213,6197,M*************************),54,No Exemptions,Band4,1.20,0.00,Completed,Expected 2412 2024-25,2024-12-16,1.20
+518768,60214,15584,M********************************),54,No Exemptions,Band2,3.00,0.00,Completed,"Expected 2412 2024-25, NHS No not used, No Ethnic Origin, New Patient",2024-12-16,4.24
+510760,60215,5590,M**********************************),58,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2412 2024-25, NHS No not used",2024-12-16,1.00
+502806,60216,6760,M*************************),58,No Exemptions,Band3,12.00,0.00,Completed,Universal Credit,2024-12-19,24.00
+510978,60217,10279,M******************************),58,No Exemptions,Band2,3.00,73.50,Completed,"Expected 2412 2024-25, New Patient, Patient details updated",2024-12-16,4.24
+511070,60218,4512,M***********************),58,No Exemptions,Band2,3.00,0.00,Completed,Expected 2412 2024-25,2024-12-16,3.00
+511087,60219,1567,M****************************************),58,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, No Ethnic Origin, New Patient",2024-12-16,1.37
+511088,60220,1568,M******************************************),58,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, No Ethnic Origin, New Patient",2024-12-16,1.37
+510974,60221,3919,M************************),54,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2412 2024-25, New Patient",2024-12-16,1.37
+511081,60222,3408,M************************************),54,No Exemptions,Band2,3.00,73.50,Completed,Expected 2412 2024-25,2024-12-16,3.00
+1413,60223,5471,M**************************),54,No Exemptions,Band3,12.00,0.00,Completed,"Expected 2412 2024-25, Universal Credit, No Ethnic Origin, New Patient",2024-12-16,13.24
+511130,60224,9444,M**********************),54,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2412 2024-25, New Patient",2024-12-16,1.37
+503767,60225,3703,M***************************************************),54,No Exemptions,Band2,3.00,0.00,Received,"' - parsing error: maxLength constraint failed.
+The attribute: 'ptsur' has an invalid value according to its data type.",2024-12-16,0.00
+511145,60226,6815,M***************************),54,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-16,1.00
+504179,60227,812,M***********************),56,No Exemptions,Band3,12.00,0.00,Completed,"Expected 2412 2024-25, Universal Credit, No treatment to justify band claimed, New Patient",2024-12-16,13.24
+511499,60228,7765,M***************************),56,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-16,1.00
+511516,60229,18294,M************************),56,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-16,1.00
+511680,60230,2883,M**********************************),56,No Exemptions,Band4,1.20,0.00,Completed,"Expected 2412 2024-25, Universal Credit",2024-12-16,1.20
+511713,60231,3212,M****************************),56,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-16,1.00
+511717,60232,586,M***************************),56,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-16,1.00
+511750,60233,4248,M*****************************),56,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-16,1.00
+511803,60234,3305,M************************),56,No Exemptions,Band4,1.20,0.00,Completed,"Expected 2412 2024-25, Universal Credit",2024-12-16,1.20
+511331,60235,7087,M**********************),58,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2412 2024-25, NHS No not used",2024-12-16,1.00
+511722,60236,2642,M***************************),58,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-16,1.00
+511799,60237,2667,M*************************),58,No Exemptions,Band2b,5.00,0.00,Completed,"Expected 2412 2024-25, No Ethnic Origin",2024-12-16,5.00
+511794,60238,10510,M***********************************),58,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-16,1.00
+511512,60239,17914,M*********************************),57,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-16,1.00
+511500,60240,5263,M**********************************),57,No Exemptions,Band4,1.20,0.00,Completed,"Expected 2412 2024-25, Tax Credits",2024-12-16,1.20
+511523,60241,9935,M***************************),57,No Exemptions,Band4,1.20,26.80,Completed,"Expected 2412 2024-25, No Ethnic Origin",2024-12-16,1.20
+511606,60242,113,M*************************),57,No Exemptions,Band4,1.20,0.00,Completed,Expected 2412 2024-25,2024-12-16,1.20
+511612,60243,13093,M*************************),57,No Exemptions,Band4,1.20,0.00,Completed,"Expected 2412 2024-25, Universal Credit, No Ethnic Origin",2024-12-16,1.20
+511647,60244,1423,M****************************),57,No Exemptions,Band4,1.20,0.00,Received,"' - parsing error: maxLength constraint failed.
+The element: 'adrln'  has an invalid value according to its data type.",2024-12-16,0.00
+511675,60245,3047,M******************************),57,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-16,1.00
+511707,60246,8330,M*************************),57,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-16,1.00
+511737,60247,15289,M**********************),57,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, NHS No not used",2024-12-16,1.00
+511739,60248,10686,M************************),57,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-16,1.00
+511759,60249,15157,M************************),57,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2412 2024-25, NHS No not used",2024-12-16,1.00
+511768,60250,12764,M**************************),57,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-16,1.00
+511786,60251,15664,M**********************),57,No Exemptions,Band4,1.20,26.80,Completed,Expected 2412 2024-25,2024-12-16,1.20
+511938,60252,115,M********************************),58,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-16,1.00
+511985,60253,7558,M*******************************),58,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2412 2024-25, NHS No not used",2024-12-16,1.00
+512057,60254,3139,M************************),58,No Exemptions,Band2,3.00,0.00,Completed,"Expected 2412 2024-25, Universal Credit",2024-12-16,3.00
+512295,60255,13567,M*************************),58,No Exemptions,Band2,3.00,0.00,Completed,"Expected 2412 2024-25, NHS No not used, Employment Support, No treatment to justify band claimed",2024-12-16,3.00
+512379,60256,8547,M****************************),58,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2412 2024-25, NHS No not used",2024-12-16,1.00
+512387,60257,993,M***************************),58,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-16,1.00
+512391,60258,11069,M*******************************),58,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, NHS No not used",2024-12-16,1.00
+512260,60259,7775,M*************************),57,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-16,1.00
+512137,60260,13034,M**************************),57,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-16,1.00
+512106,60261,13696,M**************************),57,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-16,1.00
+4133,60262,6615,M************************),57,No Exemptions,Band2b,5.00,73.50,Completed,Expected 2412 2024-25,2024-12-16,5.00
+512214,60263,10157,M****************************),57,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-16,1.00
+512270,60264,20940,M************************),57,No Exemptions,Band4,1.20,0.00,Completed,Expected 2412 2024-25,2024-12-16,1.20
+4090,60265,7780,M*********************),57,No Exemptions,Band3,12.00,0.00,Completed,"Expected 2412 2024-25, Employment Support, New Patient",2024-12-16,13.24
+512364,60266,1612,M***********************),57,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, No Ethnic Origin, New Patient",2024-12-16,1.37
+518969,60267,1613,M***********************),57,No Exemptions,Band1,1.00,0.00,Received,"' - parsing error: pattern constraint failed.
+The attribute: 'exrmcd' has an invalid value according to its data type.",2024-12-16,0.00
+511962,60268,12366,M**************************),42,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-16,1.00
+505246,60269,14504,M*************************),42,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2412 2024-25, Treatment performed on Special Leave, Address/Pcode missing",2024-12-16,1.00
+512223,60270,19399,M************************),42,No Exemptions,Band4,1.20,0.00,Received,"' - parsing error: pattern constraint failed.
+The attribute: 'exrmcd' has an invalid value according to its data type.",2024-12-16,0.00
+512365,60271,5356,M*******************************),42,No Exemptions,Band4,1.20,26.80,Completed,"Expected 2412 2024-25, No Ethnic Origin",2024-12-16,1.20
+512399,60272,9798,M***************************),42,No Exemptions,Band4,1.20,26.80,Completed,Expected 2412 2024-25,2024-12-16,1.20
+512338,60273,15232,M*************************),42,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2412 2024-25, New Patient",2024-12-16,1.37
+515134,60274,13633,M***************************),56,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-16,1.00
+1457,60275,5651,M*****************************),56,No Exemptions,Band3,12.00,0.00,Completed,"Expected 2412 2024-25, Universal Credit, No treatment to justify band claimed, No Ethnic Origin",2024-12-16,12.00
+515418,60276,21619,M*****************************),56,No Exemptions,Band4,1.20,0.00,Completed,Expected 2412 2024-25,2024-12-16,1.20
+515590,60277,2703,M***************************),56,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-16,1.00
+515601,60278,9170,M*********************************),56,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, New Patient",2024-12-16,1.37
+515622,60279,11379,M*********************),56,No Exemptions,Band2,3.00,73.50,Completed,Expected 2412 2024-25,2024-12-16,3.00
+515106,60280,11228,M****************************),58,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, Universal Credit",2024-12-16,1.00
+515183,60281,7813,M******************************),58,No Exemptions,Band2,3.00,0.00,Completed,"Expected 2412 2024-25, Pension Credit, No treatment to justify band claimed",2024-12-16,3.00
+515427,60282,3506,K*****************),58,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2412 2024-25, No Ethnic Origin, New Patient",2024-12-16,1.37
+515375,60283,20237,M*************************),58,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-16,1.00
+515433,60284,9566,M******************************),58,No Exemptions,Band4,1.20,26.80,Completed,"Expected 2412 2024-25, NHS No not used",2024-12-16,1.20
+6046,60285,1145,M**************************),58,No Exemptions,Band3,12.00,319.10,Completed,"Expected 2412 2024-25, NHS No not used, No Ethnic Origin",2024-12-16,12.00
+515568,60286,1634,M***********************),58,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2412 2024-25, No Ethnic Origin, New Patient",2024-12-16,1.37
+515607,60287,11056,M****************************),58,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, New Patient",2024-12-16,1.37
+515422,60288,10961,M***************************),54,No Exemptions,Band4,1.20,0.00,Completed,"Expected 2412 2024-25, NHS No not used, Universal Credit",2024-12-16,1.20
+515430,60289,18844,M************************),54,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-16,1.00
+515483,60290,14693,M*************************),54,No Exemptions,Band4,1.20,26.80,Completed,Expected 2412 2024-25,2024-12-16,1.20
+515532,60291,2499,M*************************),54,No Exemptions,Band2,3.00,0.00,Completed,Expected 2412 2024-25,2024-12-16,3.00
+515549,60292,8258,M***************************),54,No Exemptions,Band1,1.00,0.00,Failed,Inappropriate quantity associated with treatment code,2024-12-16,0.00
+515552,60293,1188,M**************************),54,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, No Ethnic Origin",2024-12-16,1.00
+515572,60294,6773,M****************************),54,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-16,1.00
+515584,60295,6774,M*****************************),54,No Exemptions,Band2,3.00,0.00,Completed,"Expected 2412 2024-25, NHS No not used",2024-12-16,3.00
+515595,60296,3272,M********************),54,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, No Ethnic Origin",2024-12-16,1.00
+515596,60297,3273,M**********************),54,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, NHS No not used",2024-12-16,1.00
+515769,60298,9009,M*******************************),56,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-16,1.00
+515813,60299,15724,M***************************),56,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, Pension Credit",2024-12-16,1.00
+515864,60300,13377,M**********************),56,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-16,1.00
+516077,60301,13480,M***************************),56,No Exemptions,Band4,1.20,0.00,Completed,Expected 2412 2024-25,2024-12-16,1.20
+517980,60302,13480,M***************************),57,No Exemptions,Band2,3.00,0.00,Completed,Expected 2412 2024-25,2024-12-16,3.00
+516099,60303,7460,M**************************),56,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, Universal Credit",2024-12-16,1.00
+516190,60304,4088,M*************************),56,No Exemptions,Band2,3.00,73.50,Completed,Expected 2412 2024-25,2024-12-16,3.00
+516231,60305,9159,M***********************),56,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-16,1.00
+516281,60306,16836,M*************************),56,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-16,1.00
+516282,60307,8110,M*****************************),56,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-16,1.00
+516297,60308,16582,M********************************),56,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, Address/Pcode missing, New Patient",2024-12-16,1.37
+4004,60309,7674,M***********************),54,No Exemptions,Band3,12.00,0.00,Completed,"Expected 2412 2024-25, NHS No not used, Repairs to Denture Ignored, Universal Credit, No treatment to justify band claimed, No Ethnic Origin",2024-12-16,12.00
+5027,60310,6899,M************************),54,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-16,1.00
+3287,60311,4215,M******************************),54,No Exemptions,Band3,12.00,0.00,Completed,"Expected 2412 2024-25, Repairs to Denture Ignored, Universal Credit, No treatment to justify band claimed, No Ethnic Origin",2024-12-16,12.00
+516310,60312,8303,M***************************),54,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-16,1.00
+516304,60313,8304,M***************************),54,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-16,1.00
+501961,60317,8335,M************************),46,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-16,1.00
+503461,60318,4149,M*************************),46,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2412 2024-25, New Patient",2024-12-16,1.37
+516548,60319,6654,M*************************),56,No Exemptions,Band2b,5.00,73.50,Completed,Expected 2412 2024-25,2024-12-16,7.00
+516672,60320,6766,M***************************),56,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-16,1.00
+502827,60321,3659,M**********************),56,No Exemptions,Band2,3.00,73.50,Completed,"Expected 2412 2024-25, No Ethnic Origin, New Patient",2024-12-16,4.24
+516447,60322,21677,M**********************),58,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-16,1.00
+516514,60323,3159,M******************************),58,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-16,1.00
+504051,60324,15577,M****************************),58,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2412 2024-25, NHS No not used, No Ethnic Origin, New Patient",2024-12-16,1.37
+516529,60325,15626,M*************************),54,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2412 2024-25, New Patient",2024-12-16,1.37
+504466,60326,10503,M****************************),54,No Exemptions,Band3,12.00,0.00,Completed,"Expected 2412 2024-25, Universal Credit",2024-12-16,12.00
+517024,60327,6527,M***************************),54,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, New Patient",2024-12-16,1.37
+517207,60328,5483,M**************************),56,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2412 2024-25, No Ethnic Origin",2024-12-16,1.00
+504479,60329,18099,M************************),56,No Exemptions,Band3,12.00,0.00,Completed,"Expected 2412 2024-25, No treatment to justify band claimed",2024-12-16,12.00
+517270,60330,6409,M*************************),56,No Exemptions,Band4,1.20,26.80,Completed,Expected 2412 2024-25,2024-12-16,1.20
+517292,60331,5471,M**************************),56,No Exemptions,Band4,1.20,0.00,Completed,"Expected 2412 2024-25, Universal Credit, No Ethnic Origin",2024-12-16,1.20
+517357,60332,1347,M****************************),56,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-16,1.00
+339,60333,15373,M****************************************),56,No Exemptions,Band3,12.00,319.10,Completed,"Expected 2412 2024-25, Alternative Name Found, Alternative Name Found, New Patient",2024-12-16,13.24
+517368,60334,236461,M********************************),56,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, No Ethnic Origin, New Patient",2024-12-16,1.37
+517314,60335,1234,M*********************),58,No Exemptions,Band3,12.00,0.00,Received,"' - parsing error: pattern constraint failed.
+The attribute: 'exrmcd' has an invalid value according to its data type.",2024-12-16,0.00
+5032,60336,4677,M****************************),58,No Exemptions,Band2b,5.00,73.50,Completed,"Expected 2412 2024-25, New Patient",2024-12-16,6.24
+517545,60337,12150,M*************************),58,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-16,1.00
+517598,60338,12727,M*************************************),58,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, No Ethnic Origin, New Patient",2024-12-16,1.37
+517607,60339,14880,M************************),58,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, NHS No not used",2024-12-16,1.00
+517624,60340,14171,M***************************),58,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-16,1.00
+517621,60341,14170,M************************),58,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-16,1.00
+517622,60342,2712,M************************),58,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-16,1.00
+517523,60343,2009,M***********************************),57,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, New Patient",2024-12-16,1.37
+517541,60344,2792,M****************************),57,No Exemptions,Band2,3.00,0.00,Completed,Expected 2412 2024-25,2024-12-16,3.00
+517616,60345,11242,M*************************),57,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, NHS No not used",2024-12-16,1.00
+517615,60346,11246,M****************************),57,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, New Patient",2024-12-16,1.37
+517612,60347,2512,M***********************),57,No Exemptions,Band1,1.00,0.00,Failed,Inappropriate quantity associated with treatment code,2024-12-16,0.00
+517601,60348,2563,M*********************),57,No Exemptions,Band2,3.00,0.00,Failed,Inappropriate quantity associated with treatment code,2024-12-16,0.00
+517626,60349,19556,M*************************),57,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-16,1.00
+502038,60350,15356,M**********************),46,No Exemptions,Band2,3.00,73.50,Completed,Expected 2412 2024-25,2024-12-16,3.00
+517800,60351,11204,M*********************************),58,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, New Patient",2024-12-16,1.37
+517932,60352,11667,M**************************),58,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-16,1.00
+517960,60353,3545,M********************************),58,No Exemptions,Band2,3.00,0.00,Completed,"Expected 2412 2024-25, No Ethnic Origin, New Patient",2024-12-16,4.24
+518084,60354,6561,M**********************),58,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-16,1.00
+518135,60355,15777,M************************),58,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-16,1.00
+518144,60356,6727,M*************************),58,No Exemptions,Band2b,5.00,0.00,Completed,"Expected 2412 2024-25, NHS No not used",2024-12-16,5.00
+518164,60357,15294,M*************************),58,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-16,1.00
+518162,60358,9215,M*****************************),58,No Exemptions,Band1,1.00,0.00,Completed,Expected 2412 2024-25,2024-12-16,1.00
+517720,60359,15565,M**************************),57,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-16,1.00
+517765,60360,15787,M*************************),57,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-16,1.00
+517783,60361,16045,M************************),57,No Exemptions,Band2b,5.00,73.50,Completed,"Expected 2412 2024-25, No Ethnic Origin",2024-12-16,5.00
+519028,60362,16045,M************************),57,No Exemptions,Band2b,5.00,0.00,Failed,Claim overlaps/duplicates an existing claim for the same patient the same contract or performer,2024-12-16,0.00
+517804,60363,16603,M**************************************),57,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2412 2024-25, New Patient",2024-12-16,1.37
+517837,60364,6447,M*******************************),57,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, No Ethnic Origin",2024-12-16,1.00
+517846,60365,8264,M***********************),57,No Exemptions,Band1,1.00,26.80,Completed,Expected 2412 2024-25,2024-12-16,1.00
+5213,60366,14954,M************************),57,No Exemptions,Band2,3.00,73.50,Failed,No age exemption claimed on an EDI claim for a patient aged under 18 (under 16 in the Isle of Man),2024-12-16,0.00
+518131,60367,3118,M**************************),57,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, NHS No not used",2024-12-16,1.00
+518133,60368,3416,M******************************),57,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, NHS No not used",2024-12-16,1.00
+518140,60369,3417,M********************************),57,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, NHS No not used",2024-12-16,1.00
+518169,60370,10200,M*************************),57,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, NHS No not used",2024-12-16,1.00
+517727,60371,7442,M***************************),42,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2412 2024-25, New Patient",2024-12-16,1.37
+519450,60372,3027,M**************************),46,No Exemptions,Band3,12.00,0.00,Received,"' - parsing error: pattern constraint failed.
+The attribute: 'exrmcd' has an invalid value according to its data type.",2024-12-17,0.00
+4111,60373,18985,M**************************),54,No Exemptions,Band2,3.00,0.00,Completed,"Expected 2501 2024-25, NHS No not used, Universal Credit, No treatment to justify band claimed, No Ethnic Origin",2024-12-17,3.00
+519534,60374,2300,M****************************),46,No Exemptions,Band1,1.00,0.00,Completed,Expected 2501 2024-25,2024-12-17,1.00
+516302,60375,19400,M************************),46,No Exemptions,Band2,3.00,0.00,Completed,Expected 2501 2024-25,2024-12-17,3.00
+519592,60376,12735,M****************************),46,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2501 2024-25, Address/Pcode missing, New Patient",2024-12-17,1.37
+501054,60377,3715,M***************************),56,No Exemptions,Band3,12.00,319.10,Completed,Expected 2501 2024-25,2024-12-17,12.00
+519195,60378,11217,M************************),56,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2501 2024-25, NHS No not used",2024-12-17,1.00
+519647,60379,921,M**************************),54,No Exemptions,Band1,1.00,0.00,Completed,Expected 2501 2024-25,2024-12-17,1.00
+519216,60380,7341,M*************************),54,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2501 2024-25, NHS No not used",2024-12-18,1.00
+519244,60381,11093,M************************),54,No Exemptions,Band1,1.00,26.80,Completed,Expected 2501 2024-25,2024-12-18,1.00
+509255,60382,5578,M****************************),54,No Exemptions,Band3,12.00,0.00,Completed,"Expected 2501 2024-25, Universal Credit, No Ethnic Origin, New Patient",2024-12-18,13.24
+519039,60383,14039,M****************************),54,No Exemptions,Band2b,5.00,0.00,Completed,"Expected 2501 2024-25, Universal Credit, New Patient",2024-12-24,6.24
+519504,60384,14478,M**************************),54,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2501 2024-25, No Ethnic Origin",2024-12-18,1.00
+519493,60385,17962,M*********************),54,No Exemptions,Band1,1.00,0.00,Completed,Expected 2501 2024-25,2024-12-18,1.00
+519546,60386,6790,M*************************),54,No Exemptions,Band1,1.00,0.00,Completed,Expected 2501 2024-25,2024-12-18,1.00
+511148,60387,6816,M**************************),54,No Exemptions,Band2,3.00,0.00,Completed,"Expected 2501 2024-25, No treatment to justify band claimed",2024-12-18,3.00
+519628,60388,590,M*************************),54,No Exemptions,Band2,3.00,0.00,Completed,"Expected 2501 2024-25, No treatment to justify band claimed",2024-12-18,3.00
+519667,60389,8720,M**************************),54,No Exemptions,Band2,3.00,0.00,Completed,"Expected 2501 2024-25, No treatment to justify band claimed",2024-12-18,3.00
+519672,60390,8721,M****************************),54,No Exemptions,Band2,3.00,0.00,Completed,"Expected 2501 2024-25, No treatment to justify band claimed",2024-12-18,3.00
+518521,60391,5185,M***************************),54,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2501 2024-25, NHS No not used",2024-12-18,1.00
+519835,60392,18619,M**************************),54,No Exemptions,Band1,1.00,0.00,Completed,Expected 2501 2024-25,2024-12-18,1.00
+519840,60393,13352,M*******************************),54,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2501 2024-25, New Patient",2024-12-18,1.37
+519353,60394,9426,M****************************),56,No Exemptions,Band4,1.20,26.80,Completed,"Expected 2501 2024-25, NHS No not used",2024-12-18,1.20
+515610,60395,9350,M**************************),56,No Exemptions,Band2,3.00,73.50,Completed,"Expected 2501 2024-25, NHS No not used",2024-12-18,3.00
+519847,60396,14563,M**************************),54,No Exemptions,Band1,1.00,26.80,Failed,Inappropriate quantity associated with treatment code,2024-12-18,0.00
+515550,60397,1663,M*************************),56,No Exemptions,Band2,3.00,0.00,Completed,"Expected 2501 2024-25, No Ethnic Origin, New Patient",2024-12-18,4.24
+519590,60398,2929,M**********************),56,No Exemptions,Band2,3.00,73.50,Failed,Inappropriate quantity associated with treatment code,2024-12-18,0.00
+519648,60399,18033,M*********************),56,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2501 2024-25, New Patient",2024-12-18,1.37
+519661,60400,9287,M***************************),56,No Exemptions,Band1,1.00,0.00,Completed,Expected 2501 2024-25,2024-12-18,1.00
+519680,60401,1402,M******************************),56,No Exemptions,Band1,1.00,26.80,Received,"' - parsing error: maxLength constraint failed.
+The element: 'adrln'  has an invalid value according to its data type.",2024-12-18,0.00
+519882,60402,14761,M*************************************),56,No Exemptions,Band4,1.20,26.80,Completed,Expected 2501 2024-25,2024-12-18,1.20
+519814,60403,1694,M**********************************),58,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2501 2024-25, New Patient",2024-12-18,1.37
+503475,60404,4217,M*******************************),56,No Exemptions,Band1,1.00,26.80,Completed,Expected 2501 2024-25,2024-12-18,1.00
+519971,60405,17762,M***********************),54,No Exemptions,Band3,12.00,0.00,Completed,"Expected 2501 2024-25, HC2 Certificate, No treatment to justify band claimed",2024-12-18,12.00
+520010,60406,402,M***************************),54,No Exemptions,Band4,1.20,26.80,Failed,No age exemption claimed on an EDI claim for a patient aged under 18 (under 16 in the Isle of Man),2024-12-18,0.00
+502201,60407,9384,M*****************************),58,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2501 2024-25, NHS No not used, No Ethnic Origin",2024-12-18,1.00
+502206,60408,15299,M******************************),58,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2501 2024-25, New Patient",2024-12-18,1.37
+502214,60409,15300,M********************************),58,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2501 2024-25, New Patient",2024-12-18,1.37
+502454,60410,4514,M******************),58,No Exemptions,Band4,1.20,0.00,Failed,Inappropriate quantity associated with treatment code,2024-12-18,0.00
+502566,60411,15463,M*************************),58,No Exemptions,Band2,3.00,73.50,Completed,Expected 2501 2024-25,2024-12-18,3.00
+2290,60412,12303,M*************************),58,No Exemptions,Band1,1.00,319.10,Failed,No age exemption claimed on an EDI claim for a patient aged under 18 (under 16 in the Isle of Man),2024-12-18,0.00
+520083,60413,15951,M***********************),56,No Exemptions,Band1,1.00,0.00,Received,"' - parsing error: pattern constraint failed.
+The attribute: 'exrmcd' has an invalid value according to its data type.",2024-12-18,0.00
+502670,60414,1534,M************************),58,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2501 2024-25, No Ethnic Origin, New Patient",2024-12-18,1.37
+520075,60415,5351,M****************************),54,No Exemptions,Band1,1.00,26.80,Failed,No age exemption claimed on an EDI claim for a patient aged under 18 (under 16 in the Isle of Man),2024-12-18,0.00
+520171,60416,3251,M*****************************),56,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2501 2024-25, No Ethnic Origin",2024-12-18,1.00
+1625,60417,1667,M***********************),56,No Exemptions,Band2b,5.00,0.00,Completed,"Expected 2501 2024-25, New Patient",2024-12-18,6.24
+510790,60418,5622,M*******************************),58,No Exemptions,Band2,3.00,0.00,Received,"' - parsing error: pattern constraint failed.
+The attribute: 'exrmcd' has an invalid value according to its data type.",2024-12-18,0.00
+520239,60419,9274,M****************************),56,No Exemptions,Band4,1.20,26.80,Completed,Expected 2501 2024-25,2024-12-18,1.20
+520271,60420,11312,M************************),56,No Exemptions,Band1,1.00,0.00,Completed,Expected 2501 2024-25,2024-12-18,1.00
+509630,60421,2549,M****************************),56,No Exemptions,Band3,12.00,0.00,Completed,"Expected 2501 2024-25, No treatment to justify band claimed",2024-12-18,12.00
+520368,60422,15951,M***********************),56,No Exemptions,Band4,1.20,0.00,Received,"' - parsing error: pattern constraint failed.
+The attribute: 'exrmcd' has an invalid value according to its data type.",2024-12-18,0.00
+518442,60423,13887,M************************),56,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2501 2024-25, New Patient",2024-12-18,1.37
+504647,60424,7408,M*********************************),56,No Exemptions,Band3,12.00,0.00,Received,"' - parsing error: pattern constraint failed.
+The attribute: 'exrmcd' has an invalid value according to its data type.",2024-12-18,0.00
+518538,60425,5438,M*****************************),56,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2501 2024-25, No Ethnic Origin, New Patient",2024-12-18,1.37
+518458,60426,12481,M***********************),56,No Exemptions,Band1,1.00,26.80,Completed,Expected 2501 2024-25,2024-12-18,1.00
+509185,60427,10569,M**************************),56,No Exemptions,Band1,1.00,26.80,Completed,Expected 2501 2024-25,2024-12-18,1.00
+518721,60428,15043,M*****************************),56,No Exemptions,Band1,1.00,26.80,Completed,Expected 2501 2024-25,2024-12-18,1.00
+518801,60429,10407,M**********************),56,No Exemptions,Band4,1.20,26.80,Completed,"Expected 2501 2024-25, No Ethnic Origin",2024-12-18,1.20
+5986,60430,3131,M****************************),56,No Exemptions,Band3,12.00,0.00,Completed,"Expected 2501 2024-25, Repairs to Denture Ignored, Universal Credit",2024-12-18,12.00
+518910,60431,13048,M**********************************),56,No Exemptions,Band2,3.00,0.00,Completed,"Expected 2501 2024-25, New Patient",2024-12-18,4.24
+518985,60432,12788,M*******************************),56,No Exemptions,Band1,1.00,26.80,Completed,Expected 2501 2024-25,2024-12-18,1.00
+518986,60433,12789,M*******************************),56,No Exemptions,Band1,1.00,0.00,Completed,Expected 2501 2024-25,2024-12-18,1.00
+518988,60434,12790,M*******************************),56,No Exemptions,Band2b,5.00,0.00,Completed,Expected 2501 2024-25,2024-12-18,5.00
+509901,60435,1631,M***********************),56,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2501 2024-25, No Ethnic Origin, New Patient",2024-12-18,1.37
+520489,60436,7190,M*************************),57,No Exemptions,Band1,1.00,0.00,Completed,Expected 2501 2024-25,2024-12-19,1.00
+520500,60437,15585,M****************************),56,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2501 2024-25, No Ethnic Origin, New Patient",2024-12-19,1.37
+520537,60438,11150,M***********************),58,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2501 2024-25, No Ethnic Origin, New Patient",2024-12-19,1.37
+502016,60439,7420,M*************************),56,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2501 2024-25, No Ethnic Origin",2024-12-19,1.00
+520571,60440,1565,M*************************),57,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2501 2024-25, New Patient",2024-12-19,1.37
+520669,60441,7438,M******************************),57,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2501 2024-25, No Ethnic Origin, New Patient",2024-12-19,1.37
+520670,60442,15600,M**************************************),57,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2501 2024-25, No Ethnic Origin, New Patient",2024-12-19,1.37
+520751,60443,16738,M***********************************),57,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2501 2024-25, New Patient",2024-12-19,1.37
+1268,60444,11198,M**************************),54,No Exemptions,Band2,3.00,73.50,Completed,"Expected 2501 2024-25, NHS No not used, No Ethnic Origin",2024-12-19,5.00
+511447,60445,10152,M***************************),56,No Exemptions,Band2,3.00,0.00,Completed,"Expected 2501 2024-25, HC2 Certificate, New Patient",2024-12-19,4.24
+520550,60446,3082,M******************************),56,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2501 2024-25, New Patient",2024-12-19,1.37
+518552,60447,21115,M****************************),58,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2501 2024-25, New Patient",2024-12-19,1.37
+6164,60448,13264,M***************************),58,No Exemptions,Band3,12.00,0.00,Completed,Expected 2501 2024-25,2024-12-19,12.00
+511543,60449,7146,M*************************),46,No Exemptions,Band3,12.00,0.00,Completed,"Expected 2501 2024-25, Income Support",2024-12-19,12.00
+520851,60450,6893,M***********************************),58,No Exemptions,Band1,1.00,0.00,Completed,Expected 2501 2024-25,2024-12-19,1.00
+520841,60451,7056,M********************************),56,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2501 2024-25, New Patient",2024-12-19,1.37
+520839,60452,5219,M***************************),57,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2501 2024-25, Universal Credit, New Patient",2024-12-19,1.37
+516617,60453,9135,M******************************),46,No Exemptions,Band3,12.00,0.00,Completed,"Expected 2501 2024-25, NHS No not used, HC2 Certificate",2024-12-19,12.00
+520897,60454,7531,M************************),57,No Exemptions,Band4,1.20,26.80,Completed,Expected 2501 2024-25,2024-12-19,1.20
+520901,60455,11295,M****************************************),57,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2501 2024-25, NHS No not used, No Ethnic Origin",2024-12-19,1.00
+520903,60456,11296,M*******************************),57,No Exemptions,Band1,1.00,0.00,Completed,Expected 2501 2024-25,2024-12-19,1.00
+520908,60457,13839,M***********************),57,No Exemptions,Band1,1.00,26.80,Completed,Expected 2501 2024-25,2024-12-19,1.00
+520929,60458,260,M************************),57,No Exemptions,Band1,1.00,0.00,Completed,Expected 2501 2024-25,2024-12-19,1.00
+520930,60459,17149,M*************************),57,No Exemptions,Band1,1.00,0.00,Completed,Expected 2501 2024-25,2024-12-19,1.00
+520931,60460,143,M*************************),57,No Exemptions,Band1,1.00,0.00,Completed,Expected 2501 2024-25,2024-12-19,1.00
+520941,60461,15039,M***************************),58,No Exemptions,Band1,1.00,0.00,Completed,Expected 2501 2024-25,2024-12-19,1.00
+520934,60462,15040,M***********************************),58,No Exemptions,Band1,1.00,0.00,Completed,Expected 2501 2024-25,2024-12-19,1.00
+520949,60463,6798,M*************************),57,No Exemptions,Band1,1.00,0.00,Completed,Expected 2501 2024-25,2024-12-19,1.00
+520661,60464,10500,M***********************************),46,No Exemptions,Band3,12.00,0.00,Completed,"Expected 2501 2024-25, Universal Credit",2024-12-20,12.00
+521176,60465,12589,M*************************),57,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2501 2024-25, New Patient",2024-12-20,1.37
+520902,60466,10829,M***************************),46,No Exemptions,Band4,1.20,26.80,Completed,Expected 2501 2024-25,2024-12-20,1.20
+520906,60467,21481,M**********************),46,No Exemptions,Band1,1.00,26.80,Completed,Expected 2501 2024-25,2024-12-20,1.00
+3457,60468,14462,M**********************),46,No Exemptions,Band3,12.00,319.10,Completed,Expected 2501 2024-25,2024-12-20,12.00
+519002,60469,4862,M***************************),56,No Exemptions,Band3,12.00,0.00,Completed,"Expected 2501 2024-25, Universal Credit, New Patient",2024-12-20,13.24
+512067,60470,10144,M*************************),57,No Exemptions,Band2,3.00,73.50,Completed,"Expected 2501 2024-25, No treatment to justify band claimed",2024-12-20,3.00
+521251,60471,11183,M***********************),57,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2501 2024-25, NHS No not used",2024-12-20,1.00
+521252,60472,11184,M***********************),57,No Exemptions,Band2,3.00,0.00,Completed,"Expected 2501 2024-25, NHS No not used",2024-12-20,3.00
+521391,60473,14982,M**********************),58,No Exemptions,Band2b,5.00,0.00,Completed,"Expected 2501 2024-25, Universal Credit",2024-12-20,7.00
+521412,60474,1313,M**************************),58,No Exemptions,Band2,3.00,0.00,Completed,"Expected 2501 2024-25, NHS No not used",2024-12-20,3.00
+517789,60475,302,M***********************),58,No Exemptions,Band2b,5.00,0.00,Completed,Expected 2501 2024-25,2024-12-20,5.00
+521433,60476,8522,M**********************),57,No Exemptions,Band1,1.00,0.00,Completed,Expected 2501 2024-25,2024-12-20,1.00
+521421,60477,4664,M**********************),57,No Exemptions,Band1,1.00,0.00,Completed,Expected 2501 2024-25,2024-12-20,1.00
+521269,60478,20602,M***********************),58,No Exemptions,Band1,1.00,26.80,Completed,Expected 2501 2024-25,2024-12-20,1.00
+521459,60479,2542,M**************************),58,No Exemptions,Band2,3.00,0.00,Completed,Expected 2501 2024-25,2024-12-20,3.00
+521440,60480,7634,M***********************),57,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2501 2024-25, New Patient",2024-12-20,1.37
+521492,60481,14554,M*************************),57,No Exemptions,Band1,1.00,0.00,Completed,Expected 2501 2024-25,2024-12-20,1.00
+521494,60482,14554,M*************************),57,No Exemptions,Band1,1.00,0.00,Failed,Claim overlaps/duplicates an existing claim for the same patient the same contract or performer,2024-12-20,0.00
+521523,60483,14962,M**************************),58,No Exemptions,Band2b,5.00,0.00,Completed,Expected 2501 2024-25,2024-12-20,5.00
+518804,60484,4617,M**************************),58,No Exemptions,Band2,3.00,0.00,Completed,"Expected 2501 2024-25, Universal Credit",2024-12-20,3.00
+521667,60485,297,M***********************),58,No Exemptions,Band1,1.00,0.00,Completed,Expected 2501 2024-25,2024-12-23,1.00
+521668,60486,6011,M*********************),58,No Exemptions,Band1,1.00,0.00,Completed,Expected 2501 2024-25,2024-12-23,1.00
+521692,60487,7464,M***************************),58,No Exemptions,Band1,1.00,0.00,Received,"' - parsing error: maxLength constraint failed.
+The element: 'adrln'  has an invalid value according to its data type.",2024-12-23,0.00
+521734,60488,1732,M******************************),58,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2501 2024-25, New Patient",2024-12-23,1.37
+521746,60489,5652,M*************************),58,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2501 2024-25, NHS No not used",2024-12-23,1.00
+521737,60490,5531,M**************************),58,No Exemptions,Band2,3.00,0.00,Completed,Expected 2501 2024-25,2024-12-23,3.00
+502440,60491,20540,M******************************),58,No Exemptions,Band2b,5.00,0.00,Received,"' - parsing error: pattern constraint failed.
+The attribute: 'exrmcd' has an invalid value according to its data type.",2024-12-23,0.00
+521952,60492,14293,M****************************),58,No Exemptions,Band1,1.00,0.00,Completed,Expected 2501 2024-25,2024-12-23,1.00
+521942,60493,19918,M****************************),58,No Exemptions,Band2,3.00,0.00,Completed,Expected 2501 2024-25,2024-12-23,3.00
+521676,60494,10325,M**********************************),54,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2501 2024-25, New Patient",2024-12-23,1.37
+516819,60495,20311,M**********************),54,No Exemptions,Band1,1.00,26.80,Completed,Expected 2501 2024-25,2024-12-23,1.00
+521972,60496,10001,M*************************),58,No Exemptions,Band1,1.00,0.00,Completed,Expected 2501 2024-25,2024-12-23,1.00
+521968,60497,7139,M***********************),58,No Exemptions,Band2b,5.00,0.00,Completed,Expected 2501 2024-25,2024-12-23,5.00
+521956,60498,10039,M************************),58,No Exemptions,Band1,1.00,26.80,Completed,Expected 2501 2024-25,2024-12-23,1.00
+521941,60499,21042,M***************************),58,No Exemptions,Band1,1.00,26.80,Completed,Expected 2501 2024-25,2024-12-23,1.00
+522000,60500,13511,M*********************),58,No Exemptions,Band4,1.20,0.00,Completed,"Expected 2501 2024-25, NHS No not used, Universal Credit",2024-12-23,1.20
+521747,60501,5530,M*************************),58,No Exemptions,Band2b,5.00,0.00,Completed,Expected 2501 2024-25,2024-12-23,5.00
+521763,60502,5532,M******************************),58,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2501 2024-25, Universal Credit",2024-12-23,1.00
+521808,60503,2818,M************************),54,No Exemptions,Band4,1.20,26.80,Completed,Expected 2501 2024-25,2024-12-23,1.20
+521774,60504,17025,M*********************),58,No Exemptions,Band4,1.20,26.80,Completed,Expected 2501 2024-25,2024-12-23,1.20
+521930,60505,9456,M************************),54,No Exemptions,Band2b,5.00,0.00,Completed,"Expected 2501 2024-25, NHS No not used",2024-12-23,5.00
+521793,60506,13290,M***************************),58,No Exemptions,Band1,1.00,26.80,Completed,"Expected 2501 2024-25, New Patient",2024-12-23,1.37
+521932,60507,20930,M************************),54,No Exemptions,Band1,1.00,26.80,Completed,Expected 2501 2024-25,2024-12-23,1.00
+522022,60508,1505,M**************************),58,No Exemptions,Band2b,5.00,0.00,Completed,"Expected 2501 2024-25, New Patient",2024-12-23,6.24
+522025,60509,13458,M******************************),54,No Exemptions,Band1,1.00,26.80,Failed,No age exemption claimed on an EDI claim for a patient aged under 18 (under 16 in the Isle of Man),2024-12-23,0.00
+3396,60510,326,M************************),46,No Exemptions,Band3,12.00,319.10,Completed,Expected 2501 2024-25,2024-12-24,12.00
+521996,60511,19004,M**********************),54,No Exemptions,Band2,3.00,0.00,Completed,"Expected 2501 2024-25, Universal Credit",2024-12-24,5.00
+522137,60512,14979,M***************************),54,No Exemptions,Band4,1.20,0.00,Completed,Expected 2501 2024-25,2024-12-24,1.20
+522142,60513,15389,M*******************************),54,No Exemptions,Band4,1.20,0.00,Completed,"Expected 2501 2024-25, Universal Credit",2024-12-24,1.20
+522141,60514,15376,M****************************),54,No Exemptions,Band4,1.20,0.00,Completed,Expected 2501 2024-25,2024-12-24,1.20
+502999,60515,3660,M************************),54,No Exemptions,Band3,12.00,0.00,Received,"' - parsing error: pattern constraint failed.
+The attribute: 'exrmcd' has an invalid value according to its data type.",2024-12-24,0.00
+522145,60516,19965,M*************************),54,No Exemptions,Band4,1.20,0.00,Failed,No age exemption claimed on an EDI claim for a patient aged under 18 (under 16 in the Isle of Man),2024-12-24,0.00
+522132,60517,11092,M********************************),54,No Exemptions,Band4,1.20,0.00,Completed,"Expected 2501 2024-25, Universal Credit",2024-12-24,1.20
+522097,60518,2687,M**************************),46,No Exemptions,Band1,1.00,0.00,Completed,"Expected 2501 2024-25, New Patient",2024-12-25,1.37
+522103,60519,20724,M*************************),46,No Exemptions,Band1,1.00,26.80,Completed,Expected 2501 2024-25,2024-12-25,1.00
+522109,60520,13201,M****************************),46,No Exemptions,Band2,3.00,73.50,Completed,Expected 2501 2024-25,2024-12-25,3.00
+516648,60521,10456,M***********************),46,No Exemptions,Band3,12.00,0.00,Completed,"Expected 2501 2024-25, Pension Credit",2024-12-25,12.00
+522120,60522,21623,M********************),46,No Exemptions,Band4,1.20,26.80,Completed,Expected 2501 2024-25,2024-12-25,1.20
+522127,60523,700,M*******************************),46,No Exemptions,Band1,1.00,26.80,Completed,Expected 2501 2024-25,2024-12-25,1.00
+522134,60524,21894,M******************************),46,No Exemptions,Band4,1.20,26.80,Completed,Expected 2501 2024-25,2024-12-25,1.20
+522198,60525,2310,M****************************),42,No Exemptions,Band2,3.00,0.00,Submitted,,2024-12-27,0.00
+522202,60526,2184,M***********************),42,No Exemptions,Band1,1.00,0.00,Submitted,,2024-12-27,0.00
+522200,60527,4050,M************************),58,No Exemptions,Band1,1.00,0.00,Submitted,,2024-12-27,0.00
+515379,60528,13132,M***********************),58,No Exemptions,Band1,1.00,26.80,Submitted,,2024-12-27,0.00
+522258,60529,19594,M*********************),58,No Exemptions,Band4,1.20,26.80,Submitted,,2024-12-27,0.00
