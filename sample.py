@@ -7,18 +7,18 @@ from datetime import datetime
 
 treatment_plans = pd.read_csv("data/TreatmentPlans Data.csv")
 nhs_plans = pd.read_csv("data/NHS Plans Data.csv")
+claims = pd.read_csv("data/Claims Data.csv")
 attribute_counts = treatment_plans['Description'].value_counts()
 
 
 private_filtered = treatment_plans[treatment_plans['Payor'] == 'Private']
 
-# Get unique values and counts for another attribute (AttributeX) for 'private'
 private_unique_counts = private_filtered['Description'].value_counts()
 
-
-# Repeat for 'nhs'
 nhs_filtered = treatment_plans[treatment_plans['Payor'] != 'Private']
 nhs_unique_counts = nhs_filtered['Description'].value_counts()
+
+
 
 
 treatment_plans['PlanProvider'] = treatment_plans['TreatmentProviders'].apply(lambda x: x.split(";")[0])
@@ -145,4 +145,202 @@ def checkIsNHS(isMixed, isPNHS):
 
 
 treatment_nhs_merged_data['isNHS'] = treatment_nhs_merged_data.apply(lambda row: checkIsNHS(row['isMixed'], row['isPNHS']), axis=1)
-print(treatment_nhs_merged_data)
+
+
+
+claims.rename(columns={'TreatmentPlanId': 'TreatmentPlanID'}, inplace=True)
+
+treatment_nhs_claims_merged_data = pd.merge(
+    treatment_nhs_merged_data,
+    claims,  # Select relevant columns
+    on='TreatmentPlanID',
+    how='left'  # Retain all rows from TreatmentPlans.csv
+)
+
+
+
+def checkClaimFailed(ClaimStatus):
+    if pd.isna(ClaimStatus):
+        return ""  # Return an empty string
+
+    # Check if AF3 is "Invalid" or "Failed"
+    if ClaimStatus in ["Invalid", "Failed"]:
+        return 1  # Return 1 for "Invalid" or "Failed"
+
+    # Default case
+    return 0  # Return 0 for all other cases
+
+treatment_nhs_claims_merged_data['isClaimFailed'] = treatment_nhs_claims_merged_data['ClaimStatus'].apply(checkClaimFailed)
+
+
+
+def checkClaimQueued(ClaimStatus):
+    if pd.isna(ClaimStatus):
+        return ""  # Return an empty string
+
+    # Check if AF3 is "Invalid" or "Failed"
+    if ClaimStatus in ["Submitted", "Queued"]:
+        return 1  # Return 1 for "Invalid" or "Failed"
+
+    # Default case
+    return 0  # Return 0 for all other cases
+
+treatment_nhs_claims_merged_data['isClaimQueued'] = treatment_nhs_claims_merged_data['ClaimStatus'].apply(checkClaimQueued)
+
+
+
+
+def plansThatRequireAction(PlanProvider, isClaimFailed, isNHS, complete, ClaimStatus):
+    if pd.isna(PlanProvider):
+        return ""  # Return an empty string
+
+    if isClaimFailed == 1:
+        return 1
+    if isNHS == 1:
+        if complete == 1:
+            return 1 if pd.isna(ClaimStatus) else 0
+        return 0
+    return 0
+
+
+treatment_nhs_claims_merged_data['plansThatRequireAction'] = treatment_nhs_claims_merged_data.apply(lambda row: plansThatRequireAction(row['PlanProvider'], row['isClaimFailed'], row['isNHS'], row['Complete'], row['ClaimStatus']), axis=1)
+
+
+print(treatment_nhs_claims_merged_data['plansThatRequireAction'])
+
+
+def calculateAction(PlansThatRequireAction, isClaimFailed):
+    if pd.isna(PlansThatRequireAction):
+        return ""  # Return an empty string
+
+    if PlansThatRequireAction == 0:
+        return "No Action"
+
+
+    if isClaimFailed == 1:
+        return "Claim Invalid or Failed"
+
+    # Default case
+    return "Claim Not Raised"
+
+
+
+
+treatment_nhs_claims_merged_data['whatAction'] = treatment_nhs_claims_merged_data.apply(lambda row: calculateAction(row['plansThatRequireAction'], row['isClaimFailed']), axis=1)
+
+
+
+unique_providers = treatment_nhs_claims_merged_data['PlanProvider'].unique()
+
+isFullPrivate = treatment_nhs_claims_merged_data[(treatment_nhs_claims_merged_data['isFullPrivate'] == 1) & (treatment_nhs_claims_merged_data['PlanProvider'] != "All Providers")].shape[0]
+
+isMixedOrNHS = treatment_nhs_claims_merged_data[(treatment_nhs_claims_merged_data['isMixed'] == 1) & (treatment_nhs_claims_merged_data['PlanProvider'] != "All Providers")].shape[0]
+
+isPureNHS  = treatment_nhs_claims_merged_data[(treatment_nhs_claims_merged_data['isPNHS'] == 1) & (treatment_nhs_claims_merged_data['PlanProvider'] != "All Providers")].shape[0]
+
+privateNotStarted  = treatment_nhs_claims_merged_data[(treatment_nhs_claims_merged_data['CompletedTreatments'] == 0) & (treatment_nhs_claims_merged_data['isFullPrivate'] == 1) & (treatment_nhs_claims_merged_data['PlanProvider'] != "All Providers")].shape[0]
+
+privateInProgress  = treatment_nhs_claims_merged_data[(treatment_nhs_claims_merged_data['isFullPrivate'] == 1) & (treatment_nhs_claims_merged_data['inProgress'] == 1) & (treatment_nhs_claims_merged_data['PlanProvider'] != "All Providers")].shape[0]
+
+privateCompleted  = treatment_nhs_claims_merged_data[(treatment_nhs_claims_merged_data['Complete'] == 1) & (treatment_nhs_claims_merged_data['isFullPrivate'] == 1) & (treatment_nhs_claims_merged_data['PlanProvider'] != "All Providers")].shape[0]
+
+nhsCompleted = treatment_nhs_claims_merged_data[((treatment_nhs_claims_merged_data['isMixed'] == 1) | (treatment_nhs_claims_merged_data['isPNHS'] == 1)) & (treatment_nhs_claims_merged_data['Complete'] == 1)].shape[0]
+nhsInProgress = treatment_nhs_claims_merged_data[((treatment_nhs_claims_merged_data['isMixed'] == 1) | (treatment_nhs_claims_merged_data['isPNHS'] == 1)) & (treatment_nhs_claims_merged_data['inProgress'] == 1)].shape[0]
+nhsNotStarted = treatment_nhs_claims_merged_data[((treatment_nhs_claims_merged_data['isMixed'] == 1) | (treatment_nhs_claims_merged_data['isPNHS'] == 1)) & (treatment_nhs_claims_merged_data['CompletedTreatments'] == 0)].shape[0]
+print(isPureNHS)
+
+print(isFullPrivate)
+
+print(isMixedOrNHS)
+
+print(privateNotStarted)
+
+print(privateInProgress)
+
+print(privateCompleted)
+
+allNHSPlans  = isPureNHS + isMixedOrNHS
+
+print(allNHSPlans)
+
+print(nhsCompleted)
+
+print(nhsNotStarted)
+print(nhsInProgress)
+
+nhsTotalUDAs = treatment_nhs_claims_merged_data[(treatment_nhs_claims_merged_data['PlanProvider'] != "All Providers") & (treatment_nhs_claims_merged_data['isNHS'] == 1)]['UDA'].sum()
+print(nhsTotalUDAs)
+
+nhsCompletedUDAs = treatment_nhs_claims_merged_data[(treatment_nhs_claims_merged_data['PlanProvider'] != "All Providers") & (treatment_nhs_claims_merged_data['isNHS'] == 1) & (treatment_nhs_claims_merged_data['Complete'] == 1)]['UDA'].sum()
+print(nhsCompletedUDAs)
+
+
+
+nhsFailedUDAs = treatment_nhs_claims_merged_data[(treatment_nhs_claims_merged_data['PlanProvider'] != "All Providers") & (treatment_nhs_claims_merged_data['isNHS'] == 1) & (treatment_nhs_claims_merged_data['isClaimFailed'] == 1)]['UDA'].sum()
+
+print(nhsFailedUDAs)
+
+
+
+
+nhsClaimsFailureRate = (nhsFailedUDAs / nhsTotalUDAs) * 100
+
+print(nhsClaimsFailureRate)
+
+pnhsTotalUDAs = treatment_nhs_claims_merged_data[(treatment_nhs_claims_merged_data['PlanProvider'] != "All Providers") & (treatment_nhs_claims_merged_data['isPNHS'] == 1)]['UDA'].sum()
+print(pnhsTotalUDAs)
+
+pnhsCompletedUDAs = treatment_nhs_claims_merged_data[(treatment_nhs_claims_merged_data['PlanProvider'] != "All Providers") & (treatment_nhs_claims_merged_data['isPNHS'] == 1) & (treatment_nhs_claims_merged_data['Complete'] == 1)]['UDA'].sum()
+print(pnhsCompletedUDAs)
+
+
+
+pnhsFailedUDAs = treatment_nhs_claims_merged_data[(treatment_nhs_claims_merged_data['PlanProvider'] != "All Providers") & (treatment_nhs_claims_merged_data['isPNHS'] == 1) & (treatment_nhs_claims_merged_data['isClaimFailed'] == 1)]['UDA'].sum()
+
+print(pnhsFailedUDAs)
+
+
+
+
+pnhsClaimsFailureRate = (pnhsFailedUDAs / pnhsTotalUDAs) * 100
+
+print(pnhsClaimsFailureRate)
+
+
+mixedTotalUDAs = treatment_nhs_claims_merged_data[(treatment_nhs_claims_merged_data['PlanProvider'] != "All Providers") & (treatment_nhs_claims_merged_data['isMixed'] == 1)]['UDA'].sum()
+print(mixedTotalUDAs)
+
+mixedCompletedUDAs = treatment_nhs_claims_merged_data[(treatment_nhs_claims_merged_data['PlanProvider'] != "All Providers") & (treatment_nhs_claims_merged_data['isMixed'] == 1) & (treatment_nhs_claims_merged_data['Complete'] == 1)]['UDA'].sum()
+print(mixedCompletedUDAs)
+
+
+
+mixedFailedUDAs = treatment_nhs_claims_merged_data[(treatment_nhs_claims_merged_data['PlanProvider'] != "All Providers") & (treatment_nhs_claims_merged_data['isMixed'] == 1) & (treatment_nhs_claims_merged_data['isClaimFailed'] == 1)]['UDA'].sum()
+
+print(mixedFailedUDAs)
+
+
+
+
+mixedClaimsFailureRate = (mixedFailedUDAs / mixedTotalUDAs) * 100
+
+print(mixedClaimsFailureRate)
+
+totalUDAs = treatment_nhs_claims_merged_data[(treatment_nhs_claims_merged_data['PlanProvider'] != "All Providers")]['UDA'].sum()
+print(totalUDAs)
+
+completedUDAs = treatment_nhs_claims_merged_data[(treatment_nhs_claims_merged_data['PlanProvider'] != "All Providers") & (treatment_nhs_claims_merged_data['Complete'] == 1)]['UDA'].sum()
+print(completedUDAs)
+
+
+
+failedUDAs = treatment_nhs_claims_merged_data[(treatment_nhs_claims_merged_data['PlanProvider'] != "All Providers") & (treatment_nhs_claims_merged_data['isClaimFailed'] == 1)]['UDA'].sum()
+
+print(failedUDAs)
+
+
+
+
+claimsFailureRate = (failedUDAs / totalUDAs) * 100
+
+print(claimsFailureRate)
