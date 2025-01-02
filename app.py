@@ -670,7 +670,7 @@ def main():
         planProviderDF = pd.DataFrame(planProviderUDAs)
 
         # Display the table in the Streamlit app
-        st.subheader("Detailed UDAs Breakdown")
+        st.subheader("Detailed UDA Breakdown")
         st.table(planProviderDF)
 
     # Tab 2: Plans that Need Action
