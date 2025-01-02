@@ -344,3 +344,88 @@ print(failedUDAs)
 claimsFailureRate = (failedUDAs / totalUDAs) * 100
 
 print(claimsFailureRate)
+
+categories = ['HM', 'GA', 'MJ', 'MM', 'LL', 'RM']
+
+# Filter the DataFrame to include only the specified categories
+filtered_df = treatment_nhs_claims_merged_data[treatment_nhs_claims_merged_data['PlanProvider'].isin(categories)]
+
+# Group by PlanProvider and calculate the total UDA
+uda_totals = filtered_df.groupby('PlanProvider')['UDA'].sum().reset_index()
+
+# Rename columns for clarity
+uda_totals.columns = ['PlanProvider', 'TotalUDA']
+
+# Display the results
+print(uda_totals)
+
+hm_uda_total = treatment_nhs_claims_merged_data[(treatment_nhs_claims_merged_data['PlanProvider'] == "HM") & (treatment_nhs_claims_merged_data['Complete'] == 1) & (treatment_nhs_claims_merged_data['isNHS'] == 1)]['UDA'].sum()
+
+hm_uda_successful = treatment_nhs_claims_merged_data[(treatment_nhs_claims_merged_data['PlanProvider'] == "HM") & (treatment_nhs_claims_merged_data['Complete'] == 1) & (treatment_nhs_claims_merged_data['isNHS'] == 1) ]['UDA'].sum()
+hm_uda_failed = treatment_nhs_claims_merged_data[(treatment_nhs_claims_merged_data['PlanProvider'] == "HM")  & (treatment_nhs_claims_merged_data['isNHS'] == 1) & (treatment_nhs_claims_merged_data['isClaimFailed'] == 1) ]['UDA'].sum()
+print(hm_uda_successful)
+print(hm_uda_total)
+print(hm_uda_failed)
+hm_uda_failure_rate = (hm_uda_failed / hm_uda_total) * 100
+print(hm_uda_failure_rate)
+
+ga_uda_total = treatment_nhs_claims_merged_data[(treatment_nhs_claims_merged_data['PlanProvider'] == "GA") & (treatment_nhs_claims_merged_data['Complete'] == 1) & (treatment_nhs_claims_merged_data['isNHS'] == 1)]['UDA'].sum()
+
+ga_uda_successful = treatment_nhs_claims_merged_data[(treatment_nhs_claims_merged_data['PlanProvider'] == "GA") & (treatment_nhs_claims_merged_data['Complete'] == 1) & (treatment_nhs_claims_merged_data['isNHS'] == 1) ]['UDA'].sum()
+ga_uda_failed = treatment_nhs_claims_merged_data[(treatment_nhs_claims_merged_data['PlanProvider'] == "GA")  & (treatment_nhs_claims_merged_data['isNHS'] == 1) & (treatment_nhs_claims_merged_data['isClaimFailed'] == 1) ]['UDA'].sum()
+ga_uda_failure_rate = (ga_uda_failed / ga_uda_total) * 100
+print(ga_uda_successful)
+print(ga_uda_total)
+print(ga_uda_failed)
+print(ga_uda_failure_rate)
+
+mj_uda_total = treatment_nhs_claims_merged_data[(treatment_nhs_claims_merged_data['PlanProvider'] == "MJ") & (treatment_nhs_claims_merged_data['Complete'] == 1) & (treatment_nhs_claims_merged_data['isNHS'] == 1)]['UDA'].sum()
+mj_uda_successful = treatment_nhs_claims_merged_data[(treatment_nhs_claims_merged_data['PlanProvider'] == "MJ") & (treatment_nhs_claims_merged_data['Complete'] == 1) & (treatment_nhs_claims_merged_data['isNHS'] == 1) ]['UDA'].sum()
+mj_uda_failed = treatment_nhs_claims_merged_data[(treatment_nhs_claims_merged_data['PlanProvider'] == "MJ")  & (treatment_nhs_claims_merged_data['isNHS'] == 1) & (treatment_nhs_claims_merged_data['isClaimFailed'] == 1) ]['UDA'].sum()
+mj_uda_failure_rate = (mj_uda_failed / mj_uda_total) * 100
+print(mj_uda_successful)
+print(mj_uda_total)
+print(mj_uda_failed)
+print(mj_uda_failure_rate)
+
+mm_uda_total = treatment_nhs_claims_merged_data[(treatment_nhs_claims_merged_data['PlanProvider'] == "MM") & (treatment_nhs_claims_merged_data['Complete'] == 1) & (treatment_nhs_claims_merged_data['isNHS'] == 1)]['UDA'].sum()
+mm_uda_successful = treatment_nhs_claims_merged_data[(treatment_nhs_claims_merged_data['PlanProvider'] == "MM") & (treatment_nhs_claims_merged_data['Complete'] == 1) & (treatment_nhs_claims_merged_data['isNHS'] == 1) ]['UDA'].sum()
+mm_uda_failed = treatment_nhs_claims_merged_data[(treatment_nhs_claims_merged_data['PlanProvider'] == "MM")  & (treatment_nhs_claims_merged_data['isNHS'] == 1) & (treatment_nhs_claims_merged_data['isClaimFailed'] == 1) ]['UDA'].sum()
+mm_uda_failure_rate = (mm_uda_failed / mm_uda_total) * 100
+print(mm_uda_successful)
+print(mm_uda_total)
+print(mm_uda_failed)
+print(mm_uda_failure_rate)
+
+ll_uda_total = treatment_nhs_claims_merged_data[(treatment_nhs_claims_merged_data['PlanProvider'] == "LL") & (treatment_nhs_claims_merged_data['Complete'] == 1) & (treatment_nhs_claims_merged_data['isNHS'] == 1)]['UDA'].sum()
+ll_uda_successful = treatment_nhs_claims_merged_data[(treatment_nhs_claims_merged_data['PlanProvider'] == "LL") & (treatment_nhs_claims_merged_data['Complete'] == 1) & (treatment_nhs_claims_merged_data['isNHS'] == 1) ]['UDA'].sum()
+ll_uda_failed = treatment_nhs_claims_merged_data[(treatment_nhs_claims_merged_data['PlanProvider'] == "LL")  & (treatment_nhs_claims_merged_data['isNHS'] == 1) & (treatment_nhs_claims_merged_data['isClaimFailed'] == 1) ]['UDA'].sum()
+ll_uda_failure_rate = (ll_uda_failed / ll_uda_total) * 100
+print(ll_uda_successful)
+print(ll_uda_total)
+print(ll_uda_failed)
+print(ll_uda_failure_rate)
+
+rm_uda_total = treatment_nhs_claims_merged_data[(treatment_nhs_claims_merged_data['PlanProvider'] == "RM") & (treatment_nhs_claims_merged_data['Complete'] == 1) & (treatment_nhs_claims_merged_data['isNHS'] == 1)]['UDA'].sum()
+rm_uda_successful = treatment_nhs_claims_merged_data[(treatment_nhs_claims_merged_data['PlanProvider'] == "RM") & (treatment_nhs_claims_merged_data['Complete'] == 1) & (treatment_nhs_claims_merged_data['isNHS'] == 1) ]['UDA'].sum()
+rm_uda_failed = treatment_nhs_claims_merged_data[(treatment_nhs_claims_merged_data['PlanProvider'] == "RM")  & (treatment_nhs_claims_merged_data['isNHS'] == 1) & (treatment_nhs_claims_merged_data['isClaimFailed'] == 1) ]['UDA'].sum()
+rm_uda_failure_rate = (rm_uda_failed / rm_uda_total) * 100
+print(rm_uda_successful)
+print(rm_uda_total)
+print(rm_uda_failed)
+print(rm_uda_failure_rate)
+
+
+total_uda = hm_uda_total + rm_uda_total + ll_uda_total + mm_uda_total + mj_uda_total + ga_uda_total
+
+print(total_uda)
+
+total_uda_failed = hm_uda_failed + rm_uda_failed + ll_uda_failed + mm_uda_failed + mj_uda_failed + ga_uda_failed
+print(total_uda_failed)
+
+uda_failure_rate = (total_uda_failed / total_uda) * 100
+
+print(uda_failure_rate)
+
+
+
