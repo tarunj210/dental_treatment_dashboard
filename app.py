@@ -2,9 +2,14 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import plotly.express as px
+from pandas.api.types import (
+    is_object_dtype,
+    is_categorical_dtype,
+    is_numeric_dtype,
+    is_datetime64_any_dtype,
+)
 from datetime import datetime
 
-# Load CSV files
 def load_data():
     treatment_plans = pd.read_csv("data/TreatmentPlans Data.csv")
     claims = pd.read_csv("data/Claims Data.csv")
@@ -881,7 +886,113 @@ def main():
         st.dataframe(pivot_table)
         selected_columns = ["TreatmentPlanID","Band_x","AccountID", "PlanProvider","ClaimStatus", "plansThatRequireAction", "UDAs","whatAction"]
         filtered_data = claimsData[selected_columns]
-        st.table(filtered_data)
+
+        def split_frame(dataset, batch_size):
+            return [dataset.iloc[i:i + batch_size] for i in range(0, len(dataset), batch_size)]
+
+        # Function to implement pagination and display the DataFrame
+        def paginate_df(name: str, dataset, streamlit_object: str, disabled=None, num_rows=None):
+            top_menu = st.columns(3)
+            with top_menu[0]:
+                sort = st.radio("Sort Data", options=["Yes", "No"], horizontal=1, index=1)
+            if sort == "Yes":
+                with top_menu[1]:
+                    sort_field = st.selectbox("Sort By", options=dataset.columns)
+                with top_menu[2]:
+                    sort_direction = st.radio(
+                        "Direction", options=["⬆️", "⬇️"], horizontal=True
+                    )
+                dataset = dataset.sort_values(
+                    by=sort_field, ascending=sort_direction == "⬆️", ignore_index=True
+                )
+            pagination = st.container()
+
+            bottom_menu = st.columns((4, 1, 1))
+            with bottom_menu[2]:
+                batch_size = st.selectbox("Page Size", options=[25, 50, 100], key=f"{name}")
+            with bottom_menu[1]:
+                factor = 1 if len(dataset) % batch_size > 0 else 0
+                total_pages = int(len(dataset) / batch_size) + factor
+
+                current_page = st.number_input(
+                    "Page", min_value=1, max_value=total_pages, step=1
+                )
+            with bottom_menu[0]:
+                st.markdown(f"Page **{current_page}** of **{total_pages}** ")
+
+            pages = split_frame(dataset, batch_size)
+
+            if streamlit_object == 'df':
+                pagination.dataframe(data=pages[current_page - 1], hide_index=True, use_container_width=True)
+
+            if streamlit_object == 'editable df':
+                pagination.data_editor(data=pages[current_page - 1], hide_index=True, disabled=disabled,
+                                       num_rows=num_rows, use_container_width=True)
+
+        # Function to filter the dataset
+        def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
+            df = df.copy()
+
+            for col in df.columns:
+                if is_object_dtype(df[col]):
+                    try:
+                        df[col] = pd.to_datetime(df[col])
+                    except Exception:
+                        pass
+
+                if is_datetime64_any_dtype(df[col]):
+                    df[col] = df[col].dt.tz_localize(None)
+
+            modification_container = st.container()
+
+            with modification_container:
+                to_filter_columns = st.multiselect("Filter dataframe on", df.columns)
+                for column in to_filter_columns:
+                    left, right = st.columns((1, 20))
+                    if is_categorical_dtype(df[column]) or df[column].nunique() < 10:
+                        user_cat_input = right.multiselect(
+                            f"Values for {column}",
+                            df[column].unique(),
+                            default=list(df[column].unique()),
+                        )
+                        df = df[df[column].isin(user_cat_input)]
+                    elif is_numeric_dtype(df[column]):
+                        _min = float(df[column].min())
+                        _max = float(df[column].max())
+                        step = (_max - _min) / 100
+                        user_num_input = right.slider(
+                            f"Values for {column}",
+                            min_value=_min,
+                            max_value=_max,
+                            value=(_min, _max),
+                            step=step,
+                        )
+                        df = df[df[column].between(*user_num_input)]
+                    elif is_datetime64_any_dtype(df[column]):
+                        user_date_input = right.date_input(
+                            f"Values for {column}",
+                            value=(
+                                df[column].min(),
+                                df[column].max(),
+                            ),
+                        )
+                        if len(user_date_input) == 2:
+                            user_date_input = tuple(map(pd.to_datetime, user_date_input))
+                            start_date, end_date = user_date_input
+                            df = df.loc[df[column].between(start_date, end_date)]
+                    else:
+                        user_text_input = right.text_input(
+                            f"Substring or regex in {column}",
+                        )
+                        if user_text_input:
+                            df = df[df[column].astype(str).str.contains(user_text_input)]
+
+            return df
+
+        filtered_data = filter_dataframe(filtered_data)
+
+        # Add pagination
+        paginate_df('Claims', filtered_data, 'df')
 # Run the app
 if __name__ == "__main__":
     main()
