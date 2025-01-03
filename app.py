@@ -679,10 +679,13 @@ def main():
                 "Not Yet Started": nhsNotStarted,
                 "In Progress": nhsInProgress,
                 "Completed": nhsCompleted,
-            },
+            }
+        }
+
+        udaCounts = {
             "UDA Breakdown": {
                 "Completed Plan UDAs": nhsCompletedUDAs,
-                "Yet To Claim UDAs": nhsCompletedUDAs - nhsClaimedUDAs,
+                "Yet To Claim UDAs": abs(nhsCompletedUDAs - nhsClaimedUDAs),
                 "UDAs Claimed": nhsClaimedUDAs,
                 "UDAs Awaiting Response ": allNHSAwaitingResponse,
                 "UDAs Successful": allNHSUdaSuccessful,
@@ -716,11 +719,32 @@ def main():
                     fig = px.pie(pie_chart_data, names="Status", values="Count", title=f"{row_name} Distribution")
                     st.plotly_chart(fig, use_container_width=True)
 
+        for row_name, statuses in udaCounts.items():
+            col1, col2 = st.columns(2)
+
+            with col1:
+                st.markdown(f"<h2 style='color:#ff4b4b;'>{row_name}</h2>", unsafe_allow_html=True)
+                for status, count in statuses.items():
+                    st.markdown(f"<p style='font-size:18px; margin-left:20px;'>{status}: <strong>{count}</strong></p>",
+                                unsafe_allow_html=True)
+
+            with col2:
+                # Filter pie chart data for relevant statuses
+                pie_chart_data = pd.DataFrame({
+                    "Status": [key for key in statuses.keys() if
+                               key in ["Yet To Claim UDAs", "UDAs Claimed"]],
+                    "Count": [value for key, value in statuses.items() if
+                              key in ["Yet To Claim UDAs", "UDAs Claimed"]]
+                })
+                if not pie_chart_data.empty:
+                    fig = px.pie(pie_chart_data, names="Status", values="Count", title=f"{row_name} Distribution")
+                    st.plotly_chart(fig, use_container_width=True)
+
         planProviderUDAs = {
-            "": ["HM", "GA", "MJ", "MM", "LL", "RM", "Total"],
+            "Plan Providers": ["HM", "GA", "MJ", "MM", "LL", "RM", "Total"],
             "Completed UDAs": [hm_uda_completed, ga_uda_completed, mj_uda_completed, mm_uda_completed, ll_uda_completed, rm_uda_completed, hm_uda_completed + ga_uda_completed + mj_uda_completed + mm_uda_completed + ll_uda_completed + rm_uda_completed],
             "UDAs Claimed": [hm_claimed_UDAs, ga_claimed_UDAs, mj_claimed_UDAs, mm_claimed_UDAs, ll_claimed_UDAs, rm_claimed_UDAs, hm_claimed_UDAs + ga_claimed_UDAs+mj_claimed_UDAs + mm_claimed_UDAs + ll_claimed_UDAs + rm_claimed_UDAs],
-            "Yet to Claim": [hm_uda_completed - hm_claimed_UDAs, ga_uda_completed - ga_claimed_UDAs, mj_uda_completed - mj_claimed_UDAs, mm_uda_completed - mm_claimed_UDAs, ll_uda_completed - ll_claimed_UDAs, rm_uda_completed - rm_claimed_UDAs, 100],
+            "Yet to Claim": [abs(hm_uda_completed - hm_claimed_UDAs), abs(ga_uda_completed - ga_claimed_UDAs), abs(mj_uda_completed - mj_claimed_UDAs), abs(mm_uda_completed - mm_claimed_UDAs), abs(ll_uda_completed - ll_claimed_UDAs), abs(rm_uda_completed - rm_claimed_UDAs), (hm_uda_completed - hm_claimed_UDAs) + (ga_uda_completed - ga_claimed_UDAs) + (mj_uda_completed - mj_claimed_UDAs) + (mm_uda_completed - mm_claimed_UDAs)+(ll_uda_completed - ll_claimed_UDAs) + (rm_uda_completed - rm_claimed_UDAs)],
             "UDAs Successful": [hm_uda_successful, ga_uda_successful, mj_uda_successful, mm_uda_successful, ll_uda_successful, rm_uda_successful, hm_uda_successful + ga_uda_successful + mj_uda_successful + mm_uda_successful + ll_uda_successful+rm_uda_successful],
             "UDAs Awaiting Response": [hm_awaiting_response, ga_awaiting_response, mj_awaiting_response, mm_awaiting_response, ll_awaiting_response, rm_awaiting_response, hm_awaiting_response + ga_awaiting_response + mj_awaiting_response + mm_awaiting_response+ll_awaiting_response + rm_awaiting_response],
             "UDAs Failed": [hm_uda_failed, ga_uda_failed, mj_uda_failed, mm_uda_failed, ll_uda_failed, rm_uda_failed, hm_uda_failed + ga_uda_failed + mj_uda_failed + mm_uda_failed + ll_uda_failed + rm_uda_failed],
@@ -730,6 +754,50 @@ def main():
         # Display the table in the Streamlit app
         st.subheader("Detailed UDA Breakdown")
         st.table(planProviderDF)
+        line_chart_data = pd.DataFrame({
+            "Plan Providers": ["HM", "GA", "MJ", "MM", "LL", "RM"],
+            "UDAs Claimed": [hm_claimed_UDAs, ga_claimed_UDAs, mj_claimed_UDAs, mm_claimed_UDAs, ll_claimed_UDAs,
+                             rm_claimed_UDAs]
+        })
+
+        # Create the line chart
+        fig = px.line(
+            line_chart_data,
+            x="Plan Providers",
+            y="UDAs Claimed",
+            title="UDAs Claimed by Plan Providers",
+            labels={"Plan Providers": "Plan Providers", "UDAs Claimed": "UDAs Claimed"}
+        )
+
+        # Display the line chart
+        st.plotly_chart(fig, use_container_width=True)
+
+        stacked_bar_data = pd.DataFrame({
+            "Plan Providers": ["HM", "GA", "MJ", "MM", "LL", "RM"],
+            "UDAs Successful": [hm_uda_successful, ga_uda_successful, mj_uda_successful, mm_uda_successful,
+                                ll_uda_successful, rm_uda_successful],
+            "UDAs Failed": [hm_uda_failed, ga_uda_failed, mj_uda_failed, mm_uda_failed, ll_uda_failed, rm_uda_failed]
+        })
+
+        # Melt the DataFrame for stacked bar plot
+        stacked_bar_data_melted = stacked_bar_data.melt(id_vars="Plan Providers",
+                                                        value_vars=["UDAs Successful", "UDAs Failed"],
+                                                        var_name="UDA Type",
+                                                        value_name="Count")
+
+        # Create the stacked bar chart
+        fig = px.bar(
+            stacked_bar_data_melted,
+            x="Plan Providers",
+            y="Count",
+            color="UDA Type",
+            title="UDAs Successful vs UDAs Failed by Plan Providers",
+            labels={"Count": "Number of UDAs", "Plan Providers": "Plan Providers"},
+            barmode="stack"
+        )
+
+        # Display the chart
+        st.plotly_chart(fig, use_container_width=True)
 
     # Tab 2: Plans that Need Action
     with tab2:
