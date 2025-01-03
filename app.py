@@ -879,7 +879,7 @@ def main():
         # Streamlit app to display the table
         st.title("Summary Table of UDAs")
         st.dataframe(pivot_table)
-        selected_columns = ["PatientIdentifier", "FirstName", "LastName", "AccountID", "PlanProvider","ClaimStatus", "plansThatRequireAction", "UDAs","whatAction"]
+        selected_columns = ["TreatmentPlanID","Band_x","AccountID", "PlanProvider","ClaimStatus", "plansThatRequireAction", "UDAs","whatAction"]
         filtered_data = claimsData[selected_columns]
         st.table(filtered_data)
 # Run the app
