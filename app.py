@@ -799,10 +799,89 @@ def main():
         # Display the chart
         st.plotly_chart(fig, use_container_width=True)
 
+
+
+
+
     # Tab 2: Plans that Need Action
     with tab2:
-        st.header("Plans that Need Action")
+        action_counts = treatment_nhs_claims_merged_data['whatAction'].value_counts()
 
+        # Convert the counts to a dictionary
+        action_counts_dict = action_counts.to_dict()
+
+        # Access the counts for each category
+        no_action_count = action_counts_dict.get('No Action', 0)
+        claim_not_raised_count = action_counts_dict.get('Claim Not Raised', 0)
+        claim_invalid_failed_count = action_counts_dict.get('Claim Invalid or Failed', 0)
+
+        print(claim_invalid_failed_count)
+
+        claimsData  = treatment_nhs_claims_merged_data[
+            treatment_nhs_claims_merged_data['whatAction'].isin(['Claim Not Raised', 'Claim Invalid or Failed'])
+        ]
+
+        claimNotRaisedUDA = treatment_nhs_claims_merged_data[
+            treatment_nhs_claims_merged_data['whatAction'].isin(['Claim Not Raised'])
+        ]
+
+
+
+        claimInvalidFailedUDA = treatment_nhs_claims_merged_data[
+            treatment_nhs_claims_merged_data['whatAction'].isin(['Claim Invalid or Failed'])
+        ]
+
+        # Sum the UDAs for the filtered rows
+        claim_not_raised_udas = claimNotRaisedUDA['UDAs'].sum()
+        claim_invalid_failed_udas = claimInvalidFailedUDA['UDAs'].sum()
+
+        print(claim_invalid_failed_udas)
+
+        total_claim = claim_not_raised_count + claim_invalid_failed_count
+        total_claim_udas = claim_not_raised_udas + claim_invalid_failed_udas
+        st.header("Plans that Need Action")
+        claimData = {
+            "Total Plans": [claim_not_raised_count, claim_invalid_failed_count, total_claim],
+            "UDAs": [claim_not_raised_udas, claim_invalid_failed_udas, total_claim_udas]
+        }
+        index = ["Claim Not Raised", "Claim Invalid or Failed", "Total"]
+
+        # Create a DataFrame
+        table_df = pd.DataFrame(claimData, index=index)
+
+        # Streamlit app to display the table
+        st.subheader("Claims Summary")
+        st.table(table_df)
+        filtered_providers = ["MM", "HM", "GA", "LL", "MJ", "RM"]
+
+        # Pivot the data to create the desired structure
+        pivot_table = pd.pivot_table(
+            claimsData,
+            index="PlanProvider",
+            columns="whatAction",
+            values="UDAs",
+            aggfunc="sum",
+            fill_value=0
+        )
+
+        # Flatten the columns for easier readability
+        pivot_table.columns = [col for col in pivot_table.columns]
+        pivot_table.reset_index(inplace=True)
+
+        # Add Total row
+        total_row = {
+            "PlanProvider": "Total",
+            "Claim Not Raised": pivot_table["Claim Not Raised"].sum(),
+            "Claim Invalid or Failed": pivot_table["Claim Invalid or Failed"].sum()
+        }
+        pivot_table = pd.concat([pivot_table, pd.DataFrame([total_row])], ignore_index=True)
+
+        # Streamlit app to display the table
+        st.title("Summary Table of UDAs")
+        st.dataframe(pivot_table)
+        selected_columns = ["PatientIdentifier", "FirstName", "LastName", "AccountID", "PlanProvider","ClaimStatus", "plansThatRequireAction", "UDAs","whatAction"]
+        filtered_data = claimsData[selected_columns]
+        st.table(filtered_data)
 # Run the app
 if __name__ == "__main__":
     main()
