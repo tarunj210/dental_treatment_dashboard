@@ -700,14 +700,14 @@ def main():
         }
 
         # Streamlit app
-        st.title("Plans Summary")
+        st.subheader("Plans Summary")
 
         # Enhanced UI with styled layout
         for row_name, statuses in counts.items():
             col1, col2 = st.columns(2)
 
             with col1:
-                st.markdown(f"<h2 style='color:#ff4b4b;'>{row_name}</h2>", unsafe_allow_html=True)
+                st.markdown(f"<h3 style='color:#ff4b4b;'>{row_name}</h3>", unsafe_allow_html=True)
                 for status, count in statuses.items():
                     st.markdown(f"<p style='font-size:18px; margin-left:20px;'>{status}: <strong>{count}</strong></p>",
                                 unsafe_allow_html=True)
@@ -728,7 +728,7 @@ def main():
             col1, col2 = st.columns(2)
 
             with col1:
-                st.markdown(f"<h2 style='color:#ff4b4b;'>{row_name}</h2>", unsafe_allow_html=True)
+                st.markdown(f"<h3 style='color:#ff4b4b;'>{row_name}</h3>", unsafe_allow_html=True)
                 for status, count in statuses.items():
                     st.markdown(f"<p style='font-size:18px; margin-left:20px;'>{status}: <strong>{count}</strong></p>",
                                 unsafe_allow_html=True)
@@ -882,7 +882,7 @@ def main():
         pivot_table = pd.concat([pivot_table, pd.DataFrame([total_row])], ignore_index=True)
 
         # Streamlit app to display the table
-        st.title("Summary Table of UDAs")
+        st.subheader("Summary Table of UDAs")
         st.dataframe(pivot_table)
         selected_columns = ["TreatmentPlanID","Band_x","AccountID", "PlanProvider","ClaimStatus", "plansThatRequireAction", "UDAs","whatAction"]
         filtered_data = claimsData[selected_columns]
@@ -946,7 +946,7 @@ def main():
             modification_container = st.container()
 
             with modification_container:
-                to_filter_columns = st.multiselect("Filter dataframe on", df.columns)
+                to_filter_columns = st.multiselect("Filter Claims Data on", df.columns)
                 for column in to_filter_columns:
                     left, right = st.columns((1, 20))
                     if is_categorical_dtype(df[column]) or df[column].nunique() < 10:
