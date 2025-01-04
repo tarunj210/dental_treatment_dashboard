@@ -882,7 +882,7 @@ def main():
         pivot_table = pd.concat([pivot_table, pd.DataFrame([total_row])], ignore_index=True)
 
         # Streamlit app to display the table
-        st.subheader("Summary Table of UDAs")
+        st.subheader("Summary Table of UDAs per Plan Provider")
         st.dataframe(pivot_table)
         selected_columns = ["TreatmentPlanID","Band_x","AccountID", "PlanProvider","ClaimStatus", "plansThatRequireAction", "UDAs","whatAction"]
         filtered_data = claimsData[selected_columns]
