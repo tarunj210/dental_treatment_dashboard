@@ -8,6 +8,9 @@ from pandas.api.types import (
     is_numeric_dtype,
     is_datetime64_any_dtype,
 )
+import plotly.subplots as sp
+import plotly.graph_objects as go
+
 from datetime import datetime
 
 def load_data():
@@ -21,23 +24,24 @@ def save_data(df, file_path):
     df.to_csv(file_path, index=False)
 
 # Main Streamlit app
+
 def main():
     st.set_page_config(layout="wide")
-    st.title("Dental Dashboard")
 
+    st.image("carestack.jpeg", width=300)
     # Load data
 
 
 
 
     # Sidebar for navigation
-    tab1, tab2 = st.tabs(["Executive Summary Dashboard", "Plans that Need Action"])
+    tab1, tab2, tab3 = st.tabs(["Executive Summary Dashboard", "Plans that Need Action","Provider Summary Dashboard"])
     # Tab 1: Executive Summary Dashboard
 
 
     with tab1:
-        st.header("Executive Summary Dashboard")
         treatment_plans, claims, nhs_plans = load_data()
+
         attribute_counts = treatment_plans['Description'].value_counts()
 
         private_filtered = treatment_plans[treatment_plans['Payor'] == 'Private']
@@ -61,6 +65,7 @@ def main():
         # Apply the function to each value in the column
         treatment_plans['FirstCompletedDate'] = treatment_plans['FirstCompletion'].apply(process_date)
         treatment_plans['LastCompletedDate'] = treatment_plans['LastCompletion'].apply(process_date)
+        treatment_plans['CreatedDate'] = treatment_plans['CreatedDate'].apply(process_date)
 
         treatment_plans['HygienePlans'] = treatment_plans['PlanProvider'].apply(
             lambda x: 1 if x in ["MH", "RP", "MK"] else ("" if x == "" else 0))
@@ -176,6 +181,10 @@ def main():
         )
         treatment_nhs_claims_merged_data['LastCompletedDate'] = pd.to_datetime(
             treatment_nhs_claims_merged_data['LastCompletedDate'], errors='coerce'
+        )
+
+        treatment_nhs_claims_merged_data['CreatedDate'] = pd.to_datetime(
+            treatment_nhs_claims_merged_data['CreatedDate'], errors='coerce'
         )
 
         # Filter out rows with invalid dates (1970 and greater than the current date)
@@ -454,13 +463,11 @@ def main():
         # Display the results
         print(uda_totals)
 
-        hm_uda_completed = \
-        treatment_nhs_claims_merged_data[(treatment_nhs_claims_merged_data['PlanProvider'] == "HM") & (
+        hm_uda_completed = treatment_nhs_claims_merged_data[(treatment_nhs_claims_merged_data['PlanProvider'] == "HM") & (
                 treatment_nhs_claims_merged_data['Complete'] == 1) & (treatment_nhs_claims_merged_data['isNHS'] == 1)][
             'UDAs'].sum()
 
-        hm_uda_successful = \
-        treatment_nhs_claims_merged_data[(treatment_nhs_claims_merged_data['PlanProvider'] == "HM") & (
+        hm_uda_successful = treatment_nhs_claims_merged_data[(treatment_nhs_claims_merged_data['PlanProvider'] == "HM") & (
                 treatment_nhs_claims_merged_data['Complete'] == 1) & (treatment_nhs_claims_merged_data['isNHS'] == 1)][
             'UdaConfirmed'].sum()
         hm_uda_failed = treatment_nhs_claims_merged_data[(treatment_nhs_claims_merged_data['PlanProvider'] == "HM") & (
@@ -545,6 +552,7 @@ def main():
         print(mm_uda_completed)
         print(mm_uda_failed)
         print(mm_uda_failure_rate)
+
 
         ll_uda_completed = \
         treatment_nhs_claims_merged_data[(treatment_nhs_claims_merged_data['PlanProvider'] == "LL") & (
@@ -674,76 +682,85 @@ def main():
         # Summary of provider performance
         counts = {
             "Private Plans": {
-                "Active Plans": isFullPrivate,
-                "Not Yet Started": privateNotStarted,
-                "In Progress": privateInProgress,
-                "Completed": privateCompleted,
+                "Active Plans": round(isFullPrivate,2),
+                "Not Yet Started": round(privateNotStarted,2),
+                "In Progress": round(privateInProgress,2),
+                "Completed": round(privateCompleted,2),
             },
             "NHS or Mixed Plans": {
-                "Active Plans": allNHSPlans,
-                "Not Yet Started": nhsNotStarted,
-                "In Progress": nhsInProgress,
-                "Completed": nhsCompleted,
+                "Active Plans": round(allNHSPlans,2),
+                "Not Yet Started": round(nhsNotStarted,2),
+                "In Progress": round(nhsInProgress,2),
+                "Completed": round(nhsCompleted,2),
             }
         }
 
         udaCounts = {
-            "UDA Breakdown": {
-                "Completed Plan UDAs": nhsCompletedUDAs,
-                "Yet To Claim UDAs": abs(nhsCompletedUDAs - nhsClaimedUDAs),
-                "UDAs Claimed": nhsClaimedUDAs,
-                "UDAs Awaiting Response ": allNHSAwaitingResponse,
-                "UDAs Successful": allNHSUdaSuccessful,
-                "UDAs Failed": nhsFailedUDAs,
-                "UDAs Failure Rate": (nhsFailedUDAs / (nhsFailedUDAs + allNHSUdaSuccessful)) * 100
+            "  UDA Breakdown  ": {
+                "Completed Plan UDAs": round(nhsCompletedUDAs,2),
+                "Yet To Claim UDAs": round(abs(nhsCompletedUDAs - nhsClaimedUDAs),2),
+                "UDAs Claimed": round(nhsClaimedUDAs,2),
+                "UDAs Awaiting Response ": round(allNHSAwaitingResponse,2),
+                "UDAs Successful": round(allNHSUdaSuccessful,2),
+                "UDAs Failed": round(nhsFailedUDAs,2),
+                "UDAs Failure Rate": round((nhsFailedUDAs / (nhsFailedUDAs + allNHSUdaSuccessful)) * 100,2)
             }
         }
+
+        treatment_nhs_claims_merged_data = treatment_nhs_claims_merged_data.round(2)
 
         # Streamlit app
         st.subheader("Plans Summary")
 
-        # Enhanced UI with styled layout
+
         for row_name, statuses in counts.items():
-            col1, col2 = st.columns(2)
+            with st.container(border=True):
+                col1, col2 = st.columns(2)
 
-            with col1:
-                st.markdown(f"<h3 style='color:#ff4b4b;'>{row_name}</h3>", unsafe_allow_html=True)
-                for status, count in statuses.items():
-                    st.markdown(f"<p style='font-size:18px; margin-left:20px;'>{status}: <strong>{count}</strong></p>",
-                                unsafe_allow_html=True)
+                with col1:
+                    st.markdown(f"<h3 style='color:#ff4b4b;margin-left:20px;'>{row_name}</h3>", unsafe_allow_html=True)
+                    for status, count in statuses.items():
+                        st.markdown(
+                            f"<p style='font-size:18px; margin-left:20px;'>{status}: <strong>{count}</strong></p>",
+                            unsafe_allow_html=True)
 
-            with col2:
-                # Filter pie chart data for relevant statuses
-                pie_chart_data = pd.DataFrame({
-                    "Status": [key for key in statuses.keys() if
-                               key in ["Not Yet Started", "In Progress", "Completed"]],
-                    "Count": [value for key, value in statuses.items() if
-                              key in ["Not Yet Started", "In Progress", "Completed"]]
-                })
-                if not pie_chart_data.empty:
-                    fig = px.pie(pie_chart_data, names="Status", values="Count", title=f"{row_name} Distribution")
-                    st.plotly_chart(fig, use_container_width=True)
+                with col2:
+                    # Filter pie chart data for relevant statuses
+                    pie_chart_data = pd.DataFrame({
+                        "Status": [key for key in statuses.keys() if
+                                   key in ["Not Yet Started", "In Progress", "Completed"]],
+                        "Count": [value for key, value in statuses.items() if
+                                  key in ["Not Yet Started", "In Progress", "Completed"]]
+                    })
+                    if not pie_chart_data.empty:
+                        fig = px.pie(pie_chart_data, names="Status", values="Count", title=f"{row_name} Distribution")
 
-        for row_name, statuses in udaCounts.items():
-            col1, col2 = st.columns(2)
+                        st.plotly_chart(fig, use_container_width=True)
 
-            with col1:
-                st.markdown(f"<h3 style='color:#ff4b4b;'>{row_name}</h3>", unsafe_allow_html=True)
-                for status, count in statuses.items():
-                    st.markdown(f"<p style='font-size:18px; margin-left:20px;'>{status}: <strong>{count}</strong></p>",
-                                unsafe_allow_html=True)
+        # Enhanced UI with styled layout
 
-            with col2:
-                # Filter pie chart data for relevant statuses
-                pie_chart_data = pd.DataFrame({
-                    "Status": [key for key in statuses.keys() if
-                               key in ["Yet To Claim UDAs", "UDAs Claimed"]],
-                    "Count": [value for key, value in statuses.items() if
-                              key in ["Yet To Claim UDAs", "UDAs Claimed"]]
-                })
-                if not pie_chart_data.empty:
-                    fig = px.pie(pie_chart_data, names="Status", values="Count", title=f"{row_name} Distribution")
-                    st.plotly_chart(fig, use_container_width=True)
+        with st.container(border=True):
+            for row_name, statuses in udaCounts.items():
+                col1, col2 = st.columns(2)
+
+                with col1:
+                    st.markdown(f"<h3 style='color:#ff4b4b;margin-left:20px;'>{row_name} </h3>", unsafe_allow_html=True)
+                    for status, count in statuses.items():
+                        st.markdown(
+                            f"<p style='font-size:18px; margin-left:20px;'>{status}: <strong>{count}</strong></p>",
+                            unsafe_allow_html=True)
+
+                with col2:
+                    # Filter pie chart data for relevant statuses
+                    pie_chart_data = pd.DataFrame({
+                        "Status": [key for key in statuses.keys() if
+                                   key in ["Yet To Claim UDAs", "UDAs Claimed"]],
+                        "Count": [value for key, value in statuses.items() if
+                                  key in ["Yet To Claim UDAs", "UDAs Claimed"]]
+                    })
+                    if not pie_chart_data.empty:
+                        fig = px.pie(pie_chart_data, names="Status", values="Count", title=f"{row_name} Distribution")
+                        st.plotly_chart(fig, use_container_width=True)
 
         planProviderUDAs = {
             "Plan Providers": ["HM", "GA", "MJ", "MM", "LL", "RM", "Total"],
@@ -754,55 +771,61 @@ def main():
             "UDAs Awaiting Response": [hm_awaiting_response, ga_awaiting_response, mj_awaiting_response, mm_awaiting_response, ll_awaiting_response, rm_awaiting_response, hm_awaiting_response + ga_awaiting_response + mj_awaiting_response + mm_awaiting_response+ll_awaiting_response + rm_awaiting_response],
             "UDAs Failed": [hm_uda_failed, ga_uda_failed, mj_uda_failed, mm_uda_failed, ll_uda_failed, rm_uda_failed, hm_uda_failed + ga_uda_failed + mj_uda_failed + mm_uda_failed + ll_uda_failed + rm_uda_failed],
         }
+
+
         planProviderDF = pd.DataFrame(planProviderUDAs)
-
+        planProviderDF.set_index("Plan Providers", inplace=True)
+        planProviderDF.style.format("{:.2f}")
+        st.markdown("<h3>Detailed UDA Breakdown</h3>", unsafe_allow_html=True)
         # Display the table in the Streamlit app
-        st.subheader("Detailed UDA Breakdown")
-        st.table(planProviderDF)
-        line_chart_data = pd.DataFrame({
-            "Plan Providers": ["HM", "GA", "MJ", "MM", "LL", "RM"],
-            "UDAs Claimed": [hm_claimed_UDAs, ga_claimed_UDAs, mj_claimed_UDAs, mm_claimed_UDAs, ll_claimed_UDAs,
-                             rm_claimed_UDAs]
-        })
+        with st.container(border=True):
 
-        # Create the line chart
-        fig = px.line(
-            line_chart_data,
-            x="Plan Providers",
-            y="UDAs Claimed",
-            title="UDAs Claimed by Plan Providers",
-            labels={"Plan Providers": "Plan Providers", "UDAs Claimed": "UDAs Claimed"}
-        )
+            # Use `hide_index=True` within `st.dataframe`
+            st.dataframe(planProviderDF, use_container_width=True)
+            line_chart_data = pd.DataFrame({
+                "Plan Providers": ["HM", "GA", "MJ", "MM", "LL", "RM"],
+                "UDAs Claimed": [hm_claimed_UDAs, ga_claimed_UDAs, mj_claimed_UDAs, mm_claimed_UDAs, ll_claimed_UDAs,
+                                 rm_claimed_UDAs]
+            })
 
-        # Display the line chart
-        st.plotly_chart(fig, use_container_width=True)
+            # Create the line chart
+            fig = px.line(
+                line_chart_data,
+                x="Plan Providers",
+                y="UDAs Claimed",
+                title="UDAs Claimed by Plan Providers",
+                labels={"Plan Providers": "Plan Providers", "UDAs Claimed": "UDAs Claimed"}
+            )
 
-        stacked_bar_data = pd.DataFrame({
-            "Plan Providers": ["HM", "GA", "MJ", "MM", "LL", "RM"],
-            "UDAs Successful": [hm_uda_successful, ga_uda_successful, mj_uda_successful, mm_uda_successful,
-                                ll_uda_successful, rm_uda_successful],
-            "UDAs Failed": [hm_uda_failed, ga_uda_failed, mj_uda_failed, mm_uda_failed, ll_uda_failed, rm_uda_failed]
-        })
+            # Display the line chart
+            st.plotly_chart(fig, use_container_width=True)
 
-        # Melt the DataFrame for stacked bar plot
-        stacked_bar_data_melted = stacked_bar_data.melt(id_vars="Plan Providers",
-                                                        value_vars=["UDAs Successful", "UDAs Failed"],
-                                                        var_name="UDA Type",
-                                                        value_name="Count")
+            stacked_bar_data = pd.DataFrame({
+                "Plan Providers": ["HM", "GA", "MJ", "MM", "LL", "RM"],
+                "UDAs Successful": [hm_uda_successful, ga_uda_successful, mj_uda_successful, mm_uda_successful,
+                                    ll_uda_successful, rm_uda_successful],
+                "UDAs Failed": [hm_uda_failed, ga_uda_failed, mj_uda_failed, mm_uda_failed, ll_uda_failed, rm_uda_failed]
+            })
 
-        # Create the stacked bar chart
-        fig = px.bar(
-            stacked_bar_data_melted,
-            x="Plan Providers",
-            y="Count",
-            color="UDA Type",
-            title="UDAs Successful vs UDAs Failed by Plan Providers",
-            labels={"Count": "Number of UDAs", "Plan Providers": "Plan Providers"},
-            barmode="stack"
-        )
+            # Melt the DataFrame for stacked bar plot
+            stacked_bar_data_melted = stacked_bar_data.melt(id_vars="Plan Providers",
+                                                            value_vars=["UDAs Successful", "UDAs Failed"],
+                                                            var_name="UDA Type",
+                                                            value_name="Count")
 
-        # Display the chart
-        st.plotly_chart(fig, use_container_width=True)
+            # Create the stacked bar chart
+            fig = px.bar(
+                stacked_bar_data_melted,
+                x="Plan Providers",
+                y="Count",
+                color="UDA Type",
+                title="UDAs Successful vs UDAs Failed by Plan Providers",
+                labels={"Count": "Number of UDAs", "Plan Providers": "Plan Providers"},
+                barmode="stack"
+            )
+
+            # Display the chart
+            st.plotly_chart(fig, use_container_width=True)
 
 
 
@@ -844,7 +867,6 @@ def main():
 
         total_claim = claim_not_raised_count + claim_invalid_failed_count
         total_claim_udas = claim_not_raised_udas + claim_invalid_failed_udas
-        st.header("Plans that Need Action")
         claimData = {
             "Total Plans": [claim_not_raised_count, claim_invalid_failed_count, total_claim],
             "UDAs": [claim_not_raised_udas, claim_invalid_failed_udas, total_claim_udas]
@@ -856,7 +878,7 @@ def main():
 
         # Streamlit app to display the table
         st.subheader("Claims Summary")
-        st.table(table_df)
+        st.dataframe(table_df)
         filtered_providers = ["MM", "HM", "GA", "LL", "MJ", "RM"]
 
         # Pivot the data to create the desired structure
@@ -880,21 +902,22 @@ def main():
             "Claim Invalid or Failed": pivot_table["Claim Invalid or Failed"].sum()
         }
         pivot_table = pd.concat([pivot_table, pd.DataFrame([total_row])], ignore_index=True)
-
+        pivot_table.rename(columns={"PlanProvider": "Plan Provider"}, inplace=True)
         # Streamlit app to display the table
-        st.subheader("Summary Table of UDAs per Plan Provider")
-        st.dataframe(pivot_table)
-        selected_columns = ["TreatmentPlanID","Band_x","AccountID", "PlanProvider","ClaimStatus", "plansThatRequireAction", "UDAs","whatAction"]
+        pivot_table_reset = pivot_table.reset_index(drop=True)
+        st.subheader("Summary Table of UDAs")
+        st.dataframe(pivot_table_reset)
+        selected_columns = ["TreatmentPlanID","AccountID", "Band_x","PlanProvider","ClaimStatus", "FirstCompletedDate","plansThatRequireAction", "UDAs","whatAction"]
         filtered_data = claimsData[selected_columns]
 
         def split_frame(dataset, batch_size):
-            return [dataset.iloc[i:i + batch_size] for i in range(0, len(dataset), batch_size)]
+            return [dataset.iloc[i:i + batch_size].reset_index(drop=True) for i in range(0, len(dataset), batch_size)]
 
         # Function to implement pagination and display the DataFrame
         def paginate_df(name: str, dataset, streamlit_object: str, disabled=None, num_rows=None):
             top_menu = st.columns(3)
             with top_menu[0]:
-                sort = st.radio("Sort Data", options=["Yes", "No"], horizontal=1, index=1)
+                sort = st.radio("Sort Data", options=["Yes", "No"], horizontal=True, index=1)
             if sort == "Yes":
                 with top_menu[1]:
                     sort_field = st.selectbox("Sort By", options=dataset.columns)
@@ -905,6 +928,7 @@ def main():
                 dataset = dataset.sort_values(
                     by=sort_field, ascending=sort_direction == "⬆️", ignore_index=True
                 )
+
             pagination = st.container()
 
             bottom_menu = st.columns((4, 1, 1))
@@ -923,10 +947,22 @@ def main():
             pages = split_frame(dataset, batch_size)
 
             if streamlit_object == 'df':
-                pagination.dataframe(data=pages[current_page - 1], hide_index=True, use_container_width=True)
+                # Apply formatting: retain float for 'UDAs', round others to integers
+                formatted_page = pages[current_page - 1].applymap(
+                    lambda x: f"{x:.2f}" if isinstance(x, float) and 'UDAs' in dataset.columns and x not in [None,
+                                                                                                             np.nan]
+                    else (f"{int(x)}" if isinstance(x, (int, float)) and not np.isnan(x) else x)
+                )
+                pagination.dataframe(data=formatted_page, hide_index=True, use_container_width=True)
 
             if streamlit_object == 'editable df':
-                pagination.data_editor(data=pages[current_page - 1], hide_index=True, disabled=disabled,
+                # Apply formatting: retain float for 'UDAs', round others to integers
+                formatted_page = pages[current_page - 1].applymap(
+                    lambda x: f"{x:.2f}" if isinstance(x, float) and 'UDAs' in dataset.columns and x not in [None,
+                                                                                                             np.nan]
+                    else (f"{int(x)}" if isinstance(x, (int, float)) and not np.isnan(x) else x)
+                )
+                pagination.data_editor(data=formatted_page, hide_index=True, disabled=disabled,
                                        num_rows=num_rows, use_container_width=True)
 
         # Function to filter the dataset
@@ -989,10 +1025,323 @@ def main():
 
             return df
 
+
+
+        # Apply filtering and pagination
         filtered_data = filter_dataframe(filtered_data)
+
 
         # Add pagination
         paginate_df('Claims', filtered_data, 'df')
+
+        with tab3:
+            plan_providers = ["HM","GA","MJ", "MM","LL", "RM"]
+
+            # Initialize empty lists to store results
+            total_plans = []
+            private_plans = []
+            nhs_plans = []
+
+            # Calculate metrics for each PlanProvider
+            for provider in plan_providers:
+                total = treatment_nhs_claims_merged_data["PlanProvider"].value_counts().get(provider, 0)
+                private = treatment_nhs_claims_merged_data[
+                    (treatment_nhs_claims_merged_data["PlanProvider"] == provider) &
+                    (treatment_nhs_claims_merged_data["isFullPrivate"] == 1)
+                    ].shape[0]
+                nhs = treatment_nhs_claims_merged_data[
+                    (treatment_nhs_claims_merged_data["PlanProvider"] == provider) &
+                    (treatment_nhs_claims_merged_data["isNHS"] == 1)
+                    ].shape[0]
+
+                total_plans.append(total)
+                private_plans.append(private)
+                nhs_plans.append(nhs)
+
+            # Create a DataFrame
+            metrics_df = pd.DataFrame({
+                "PlanProvider": plan_providers,
+                "Total Plans": total_plans,
+                "Private Plans": private_plans,
+                "NHS Plans": nhs_plans
+            })
+            # Visualization: Grouped Bar Chart
+            metrics_melted = metrics_df.melt(id_vars="PlanProvider", var_name="Metric", value_name="Count")
+
+            fig = px.bar(
+                metrics_melted,
+                x="PlanProvider",
+                y="Count",
+                color="Metric",
+                title="Plan Provider Metrics",
+                barmode="group",
+                labels={"PlanProvider": "Plan Provider", "Count": "Count", "Metric": "Plan Type"}
+            )
+
+            view_metrics = st.radio(
+                "",
+                ("Chart View", "Table View"),
+                horizontal=True,
+                key="metrics_view",
+            )
+
+            if view_metrics == "Chart View":
+                with st.container(border=True):
+
+                    st.plotly_chart(fig, use_container_width=True)
+            else:
+                with st.container(border=True):
+                    st.subheader("Plan Provider Metrics")
+                    metrics_df.set_index("PlanProvider", inplace=True)
+                    st.dataframe(metrics_df)
+
+
+
+            private_completed_list = []
+            nhs_completed_list = []
+            completed_plans_list = []
+
+            # Calculate metrics for each PlanProvider
+            for provider in plan_providers:
+                private_completed = treatment_nhs_claims_merged_data[
+                    (treatment_nhs_claims_merged_data["PlanProvider"] == provider) &
+                    (treatment_nhs_claims_merged_data["isFullPrivate"] == 1) &
+                    (treatment_nhs_claims_merged_data["Complete"] == 1)
+                    ].shape[0]
+
+                nhs_completed = treatment_nhs_claims_merged_data[
+                    (treatment_nhs_claims_merged_data["PlanProvider"] == provider) &
+                    (treatment_nhs_claims_merged_data["isNHS"] == 1) &
+                    (treatment_nhs_claims_merged_data["Complete"] == 1)
+                    ].shape[0]
+
+                completed_plans = private_completed + nhs_completed
+
+                # Append results to the lists
+                private_completed_list.append(private_completed)
+                nhs_completed_list.append(nhs_completed)
+                completed_plans_list.append(completed_plans)
+
+            # Create a DataFrame
+            completed_data = pd.DataFrame({
+                "PlanProvider": plan_providers,
+                "Private Completed": private_completed_list,
+                "NHS Completed": nhs_completed_list,
+                "Total Completed": completed_plans_list
+            })
+
+
+
+            # Create a subplot of pie charts
+            fig_completed = sp.make_subplots(
+                rows=2, cols=3, specs=[[{"type": "domain"}] * 3, [{"type": "domain"}] * 3],
+                subplot_titles=completed_data["PlanProvider"]
+            )
+
+            for i, provider in enumerate(completed_data["PlanProvider"]):
+                row = (i // 3) + 1
+                col = (i % 3) + 1
+                fig_completed.add_trace(
+                    go.Pie(
+                        labels=["Private Completed", "NHS Completed"],
+                        values=completed_data.loc[i, ["Private Completed", "NHS Completed"]],
+                        name=provider
+                    ),
+                    row=row, col=col
+                )
+
+            fig_completed.update_layout(title_text="Completed Plans by Provider")
+            view_metrics = st.radio(
+                "",
+                ("Chart View", "Table View"),
+                horizontal=True,
+                key="completed_view",
+            )
+
+            if view_metrics == "Chart View":
+                with st.container(border=True):
+                    st.plotly_chart(fig_completed, use_container_width=True)
+            else:
+                with st.container(border=True):
+                    st.subheader("Completed Plans by Provider")
+                    completed_data.set_index("PlanProvider", inplace=True)
+                    st.dataframe(completed_data)
+
+            # Define columns for the filters
+            col1, col2= st.columns([2,2])
+
+            # Filter for view selection (Weekly or Monthly)
+            with col1:
+
+                st.subheader("")
+                view_option = st.radio("Select View", ["Weekly View", "Monthly View"], horizontal=True,index=0)
+                filtered_data = treatment_nhs_claims_merged_data[
+                    treatment_nhs_claims_merged_data["PlanProvider"].isin(["HM", "GA", "LL", "MM", "MJ", "RM"])
+                ]
+                selected_provider = st.sidebar.selectbox(
+                    "Select a Plan Provider", options=filtered_data["PlanProvider"].unique()
+                )
+                provider_data = filtered_data[filtered_data["PlanProvider"] == selected_provider]
+
+
+
+
+            # Filters for month and year in the Monthly View
+            if view_option == "Monthly View":
+                with col2:
+                    selected_year = st.selectbox("Select Year",
+                                                     options=filtered_data['LastCompletedDate'].dt.year.unique())
+
+
+                    selected_month = st.selectbox(
+                            "Select Month", options=range(1, 13), format_func=lambda x: f"{x:02d}"
+                        )
+
+            if view_option == "Weekly View":
+                with st.container(border=True):
+                # Weekly UDA data preparation
+                    created_in_soe_hm = provider_data[provider_data["CreatedIn"] != "Created in Carestack"]
+                    created_in_soe_hm["soe_total"] = created_in_soe_hm.loc[
+                        (provider_data["isNHS"] == 1) & (provider_data["Complete"] == 1), "UDAs"
+                    ].sum()
+
+                    date_filter = pd.to_datetime("2024-11-17")
+                    carestack_sorted = provider_data[
+                        (provider_data["CreatedIn"] == "Created in Carestack") &
+                        (provider_data["LastCompletedDate"] > date_filter)
+                        ].sort_values(by="LastCompletedDate", ascending=True)
+
+                    start_date = carestack_sorted['LastCompletedDate'].min()
+                    end_date = carestack_sorted['LastCompletedDate'].max()
+
+                    # Generate weekly bins
+                    bins = [start_date + pd.Timedelta(weeks=i) for i in range(9)]  # 8 weeks
+                    labels = [f"Week {i + 1}" for i in range(8)]  # Week labels
+
+                    # Assign rows to weekly bins
+                    carestack_sorted['Week'] = pd.cut(
+                        carestack_sorted['LastCompletedDate'],
+                        bins=bins,
+                        labels=labels,
+                        right=False,
+                        include_lowest=True
+                    )
+
+                    # Calculate metrics
+                    weekly_uda_totals = carestack_sorted[
+                        (carestack_sorted['isNHS'] == 1) & (carestack_sorted['Complete'] == 1)
+                        ].groupby('Week')['UDAs'].sum().reset_index()
+
+                    weekly_uda_claimed = carestack_sorted[
+                        (carestack_sorted['Complete'] == 1) & (carestack_sorted['isNHS'] == 1)
+                        ].groupby('Week')['UDA'].sum().reset_index()
+
+                    weekly_uda_successful = carestack_sorted[
+                        (carestack_sorted['Complete'] == 1) & (carestack_sorted['isNHS'] == 1)
+                        ].groupby('Week')['UdaConfirmed'].sum().reset_index()
+
+                    weekly_uda_failed = carestack_sorted[
+                        (carestack_sorted['isNHS'] == 1) & (carestack_sorted['isClaimFailed'] == 1)
+                        ].groupby('Week')['UDA'].sum().reset_index()
+
+                    # Merge metrics for visualization
+                    line_chart_data = weekly_uda_totals.rename(columns={"UDAs": "Total UDAs"}).copy()
+                    line_chart_data["Claimed UDAs"] = weekly_uda_claimed["UDA"]
+                    line_chart_data["Successful UDAs"] = weekly_uda_successful["UdaConfirmed"]
+                    line_chart_data["Failed UDAs"] = weekly_uda_failed["UDA"]
+
+                    # Melt data for multi-line chart
+                    line_chart_data = line_chart_data.melt(
+                        id_vars=["Week"],
+                        value_vars=["Total UDAs", "Claimed UDAs", "Successful UDAs", "Failed UDAs"],
+                        var_name="Metric",
+                        value_name="Value"
+                    )
+
+                    # Create line chart
+                    fig = px.line(
+                        line_chart_data,
+                        x="Week",
+                        y="Value",
+                        color="Metric",
+                        title=f"UDA Weekly Trends for Plan Provider: {selected_provider}",
+                        labels={"Value": "UDAs", "Week": "Week"}
+                    )
+
+                    # Display line chart
+                    st.plotly_chart(fig, use_container_width=True)
+
+            elif view_option == "Monthly View":
+                with st.container(border=True):
+                # Monthly view preparation
+                    start_date = pd.Timestamp(year=selected_year, month=selected_month, day=1)
+                    end_date = (start_date + pd.offsets.MonthEnd(1)).normalize()
+
+                    # Filter for the selected month
+                    carestack_sorted = provider_data[
+                        (provider_data["CreatedIn"] == "Created in Carestack") &
+                        (provider_data["LastCompletedDate"] >= start_date) &
+                        (provider_data["LastCompletedDate"] <= end_date)
+                        ].sort_values(by="LastCompletedDate", ascending=True)
+
+                    # Generate 4-week bins
+                    bins = [start_date + pd.Timedelta(days=7 * i) for i in range(5)]  # 4 weeks
+                    labels = [f"Week {i + 1}" for i in range(4)]  # Week labels
+
+                    # Assign rows to weekly bins within the month
+                    carestack_sorted['Week'] = pd.cut(
+                        carestack_sorted['LastCompletedDate'],
+                        bins=bins,
+                        labels=labels,
+                        right=False,
+                        include_lowest=True
+                    )
+
+                    # Calculate metrics for the selected month
+                    monthly_uda_totals = carestack_sorted[
+                        (carestack_sorted['isNHS'] == 1) & (carestack_sorted['Complete'] == 1)
+                        ].groupby('Week')['UDAs'].sum().reset_index()
+
+                    monthly_uda_claimed = carestack_sorted[
+                        (carestack_sorted['Complete'] == 1) & (carestack_sorted['isNHS'] == 1)
+                        ].groupby('Week')['UDA'].sum().reset_index()
+
+                    monthly_uda_successful = carestack_sorted[
+                        (carestack_sorted['Complete'] == 1) & (carestack_sorted['isNHS'] == 1)
+                        ].groupby('Week')['UdaConfirmed'].sum().reset_index()
+
+                    monthly_uda_failed = carestack_sorted[
+                        (carestack_sorted['isNHS'] == 1) & (carestack_sorted['isClaimFailed'] == 1)
+                        ].groupby('Week')['UDA'].sum().reset_index()
+
+                    # Merge metrics for visualization
+                    line_chart_data = monthly_uda_totals.rename(columns={"UDAs": "Total UDAs"}).copy()
+                    line_chart_data["Claimed UDAs"] = monthly_uda_claimed["UDA"]
+                    line_chart_data["Successful UDAs"] = monthly_uda_successful["UdaConfirmed"]
+                    line_chart_data["Failed UDAs"] = monthly_uda_failed["UDA"]
+
+                    # Melt data for multi-line chart
+                    line_chart_data = line_chart_data.melt(
+                        id_vars=["Week"],
+                        value_vars=["Total UDAs", "Claimed UDAs", "Successful UDAs", "Failed UDAs"],
+                        var_name="Metric",
+                        value_name="Value"
+                    )
+
+                    # Create line chart
+                    fig = px.line(
+                        line_chart_data,
+                        x="Week",
+                        y="Value",
+                        color="Metric",
+                        title=f"UDA Monthly Trends for {start_date.strftime('%B %Y')} - Plan Provider: {selected_provider}",
+                        labels={"Value": "UDAs", "Week": "Week"}
+                    )
+
+                    # Display line chart
+                    st.plotly_chart(fig, use_container_width=True)
+
+
 # Run the app
 if __name__ == "__main__":
     main()

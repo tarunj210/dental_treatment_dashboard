@@ -428,4 +428,13 @@ uda_failure_rate = (total_uda_failed / total_uda) * 100
 print(uda_failure_rate)
 
 
+categories = ["Private Plans", "NHS or Mixed Plans", "UDA Breakdown"]
+statuses = ["Active Plans", "Not Yet Started", "In Progress", "Completed"]
+
+# Loop through each category and display counts for each status
+for category in categories:
+    st.subheader(f"{category} Summary")
+    for status in statuses:
+        count = df.loc[(df["Category"] == category) & (df["Status"] == status), "Count"].values[0]
+        st.write(f"{status}: {count}")
 
