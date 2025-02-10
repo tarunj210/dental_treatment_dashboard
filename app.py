@@ -11,7 +11,9 @@ from pandas.api.types import (
 import plotly.subplots as sp
 import plotly.graph_objects as go
 
-from datetime import datetime
+
+from ipyvizzu import Data, Config, Style
+
 
 def load_data():
     treatment_plans = pd.read_csv("data/TreatmentPlans Data.csv")
@@ -712,17 +714,15 @@ def main():
         # Streamlit app
         st.subheader("Plans Summary")
 
-
         for row_name, statuses in counts.items():
-            with st.container(border=True):
+            with st.expander(f"{row_name} Distribution", expanded=False):
                 col1, col2 = st.columns(2)
-
                 with col1:
-                    st.markdown(f"<h3 style='color:#ff4b4b;margin-left:20px;'>{row_name}</h3>", unsafe_allow_html=True)
                     for status, count in statuses.items():
                         st.markdown(
-                            f"<p style='font-size:18px; margin-left:20px;'>{status}: <strong>{count}</strong></p>",
-                            unsafe_allow_html=True)
+                            f"<p>{status}: <strong>{count}</strong></p>",
+                            unsafe_allow_html=True
+                        )
 
                 with col2:
                     # Filter pie chart data for relevant statuses
@@ -734,20 +734,18 @@ def main():
                     })
                     if not pie_chart_data.empty:
                         fig = px.pie(pie_chart_data, names="Status", values="Count", title=f"{row_name} Distribution")
-
                         st.plotly_chart(fig, use_container_width=True)
 
         # Enhanced UI with styled layout
 
-        with st.container(border=True):
+        with st.expander(f"UDA Breakdown", expanded=False):
             for row_name, statuses in udaCounts.items():
                 col1, col2 = st.columns(2)
 
                 with col1:
-                    st.markdown(f"<h3 style='color:#ff4b4b;margin-left:20px;'>{row_name} </h3>", unsafe_allow_html=True)
                     for status, count in statuses.items():
                         st.markdown(
-                            f"<p style='font-size:18px; margin-left:20px;'>{status}: <strong>{count}</strong></p>",
+                            f"<p>{status}: <strong>{count}</strong></p>",
                             unsafe_allow_html=True)
 
                 with col2:
@@ -776,11 +774,10 @@ def main():
         planProviderDF = pd.DataFrame(planProviderUDAs)
         planProviderDF.set_index("Plan Providers", inplace=True)
         planProviderDF.style.format("{:.2f}")
-        st.markdown("<h3>Detailed UDA Breakdown</h3>", unsafe_allow_html=True)
         # Display the table in the Streamlit app
-        with st.container(border=True):
+        with st.expander(f"Detailed UDA Breakdown", expanded=False):
 
-            # Use `hide_index=True` within `st.dataframe`
+            # Use hide_index=True within st.dataframe
             st.dataframe(planProviderDF, use_container_width=True)
             line_chart_data = pd.DataFrame({
                 "Plan Providers": ["HM", "GA", "MJ", "MM", "LL", "RM"],
@@ -826,6 +823,12 @@ def main():
 
             # Display the chart
             st.plotly_chart(fig, use_container_width=True)
+
+
+
+
+
+
 
 
 
@@ -942,7 +945,7 @@ def main():
                     "Page", min_value=1, max_value=total_pages, step=1
                 )
             with bottom_menu[0]:
-                st.markdown(f"Page **{current_page}** of **{total_pages}** ")
+                st.markdown(f"Page *{current_page}* of *{total_pages}* ")
 
             pages = split_frame(dataset, batch_size)
 
@@ -1151,12 +1154,6 @@ def main():
                 )
 
             fig_completed.update_layout(title_text="Completed Plans by Provider")
-            view_metrics = st.radio(
-                "",
-                ("Chart View", "Table View"),
-                horizontal=True,
-                key="completed_view",
-            )
 
             if view_metrics == "Chart View":
                 with st.container(border=True):
@@ -1171,180 +1168,145 @@ def main():
             col1, col2= st.columns([2,2])
 
             # Filter for view selection (Weekly or Monthly)
-            with col1:
+            with st.container(border=True):
+                with col1:
 
-                st.subheader("")
-                view_option = st.radio("Select View", ["Weekly View", "Monthly View"], horizontal=True,index=0)
-                filtered_data = treatment_nhs_claims_merged_data[
-                    treatment_nhs_claims_merged_data["PlanProvider"].isin(["HM", "GA", "LL", "MM", "MJ", "RM"])
-                ]
-                selected_provider = st.sidebar.selectbox(
-                    "Select a Plan Provider", options=filtered_data["PlanProvider"].unique()
-                )
-                provider_data = filtered_data[filtered_data["PlanProvider"] == selected_provider]
-
-
-
-
-            # Filters for month and year in the Monthly View
-            if view_option == "Monthly View":
-                with col2:
-                    selected_year = st.selectbox("Select Year",
-                                                     options=filtered_data['LastCompletedDate'].dt.year.unique())
+                    st.subheader("")
+                    view_option = st.radio("Select View", ["Weekly View", "Monthly View"], horizontal=True,index=0)
+                    filtered_data = treatment_nhs_claims_merged_data[
+                        treatment_nhs_claims_merged_data["PlanProvider"].isin(["HM", "GA", "LL", "MM", "MJ", "RM"])
+                    ]
+                    selected_provider = st.sidebar.selectbox(
+                        "Select a Plan Provider", options=filtered_data["PlanProvider"].unique()
+                    )
+                    provider_data = filtered_data[filtered_data["PlanProvider"] == selected_provider]
 
 
-                    selected_month = st.selectbox(
-                            "Select Month", options=range(1, 13), format_func=lambda x: f"{x:02d}"
-                        )
 
-            if view_option == "Weekly View":
-                with st.container(border=True):
-                # Weekly UDA data preparation
-                    created_in_soe_hm = provider_data[provider_data["CreatedIn"] != "Created in Carestack"]
-                    created_in_soe_hm["soe_total"] = created_in_soe_hm.loc[
-                        (provider_data["isNHS"] == 1) & (provider_data["Complete"] == 1), "UDAs"
-                    ].sum()
 
-                    date_filter = pd.to_datetime("2024-11-17")
-                    carestack_sorted = provider_data[
-                        (provider_data["CreatedIn"] == "Created in Carestack") &
-                        (provider_data["LastCompletedDate"] > date_filter)
-                        ].sort_values(by="LastCompletedDate", ascending=True)
+                # Filters for month and year in the Monthly View
 
-                    start_date = carestack_sorted['LastCompletedDate'].min()
-                    end_date = carestack_sorted['LastCompletedDate'].max()
+                metric_mapping = {
+                    "Total UDAs": "Completed UDAs",
+                    "Claimed UDAs": "Claimed UDAs",
+                    "Successful UDAs": "Successful UDAs",
+                    "Failed UDAs": "Failed UDAs"
+                }
+
+                # **Process Weekly & Monthly Data Based on User Selection**
+                date_filter = pd.to_datetime("2024-11-17")
+                carestack_sorted = provider_data[
+                    (provider_data["CreatedIn"] == "Created in Carestack") &
+                    (provider_data["LastCompletedDate"] > date_filter)
+                    ].sort_values(by="LastCompletedDate", ascending=True)
+
+                start_date = carestack_sorted['LastCompletedDate'].min()
+                end_date = carestack_sorted['LastCompletedDate'].max()
+
+                if view_option == "Weekly View":
+                    st.subheader(f"UDA Weekly Trends for Plan Provider: {selected_provider}")
 
                     # Generate weekly bins
-                    bins = [start_date + pd.Timedelta(weeks=i) for i in range(9)]  # 8 weeks
-                    labels = [f"Week {i + 1}" for i in range(8)]  # Week labels
+                    bins = [start_date + pd.Timedelta(weeks=i) for i in range(9)]
+                    labels = [f"Week {i + 1}" for i in range(8)]
 
-                    # Assign rows to weekly bins
-                    carestack_sorted['Week'] = pd.cut(
-                        carestack_sorted['LastCompletedDate'],
-                        bins=bins,
-                        labels=labels,
-                        right=False,
+                    # Assign weeks
+                    carestack_sorted['Period'] = pd.cut(
+                        carestack_sorted['LastCompletedDate'], bins=bins, labels=labels, right=False,
                         include_lowest=True
                     )
 
-                    # Calculate metrics
-                    weekly_uda_totals = carestack_sorted[
-                        (carestack_sorted['isNHS'] == 1) & (carestack_sorted['Complete'] == 1)
-                        ].groupby('Week')['UDAs'].sum().reset_index()
+                elif view_option == "Monthly View":
+                    st.subheader(
+                        f"UDA Monthly Trends from {start_date.strftime('%B %Y')} to {end_date.strftime('%B %Y')}")
 
-                    weekly_uda_claimed = carestack_sorted[
-                        (carestack_sorted['Complete'] == 1) & (carestack_sorted['isNHS'] == 1)
-                        ].groupby('Week')['UDA'].sum().reset_index()
+                    # Convert date to Month-Year format
+                    carestack_sorted['Period'] = carestack_sorted['LastCompletedDate'].dt.strftime('%B %Y')
 
-                    weekly_uda_successful = carestack_sorted[
-                        (carestack_sorted['Complete'] == 1) & (carestack_sorted['isNHS'] == 1)
-                        ].groupby('Week')['UdaConfirmed'].sum().reset_index()
+                # **Calculate Metrics (Weekly or Monthly)**
+                uda_totals = carestack_sorted[
+                    (carestack_sorted['isNHS'] == 1) & (carestack_sorted['Complete'] == 1)
+                    ].groupby(['Period'])['UDAs'].sum().reset_index()
 
-                    weekly_uda_failed = carestack_sorted[
-                        (carestack_sorted['isNHS'] == 1) & (carestack_sorted['isClaimFailed'] == 1)
-                        ].groupby('Week')['UDA'].sum().reset_index()
+                uda_claimed = carestack_sorted[
+                    (carestack_sorted['Complete'] == 1) & (carestack_sorted['isNHS'] == 1)
+                    ].groupby(['Period'])['UDA'].sum().reset_index()
 
-                    # Merge metrics for visualization
-                    line_chart_data = weekly_uda_totals.rename(columns={"UDAs": "Total UDAs"}).copy()
-                    line_chart_data["Claimed UDAs"] = weekly_uda_claimed["UDA"]
-                    line_chart_data["Successful UDAs"] = weekly_uda_successful["UdaConfirmed"]
-                    line_chart_data["Failed UDAs"] = weekly_uda_failed["UDA"]
+                uda_successful = carestack_sorted[
+                    (carestack_sorted['Complete'] == 1) & (carestack_sorted['isNHS'] == 1)
+                    ].groupby(['Period'])['UdaConfirmed'].sum().reset_index()
 
-                    # Melt data for multi-line chart
-                    line_chart_data = line_chart_data.melt(
-                        id_vars=["Week"],
-                        value_vars=["Total UDAs", "Claimed UDAs", "Successful UDAs", "Failed UDAs"],
-                        var_name="Metric",
-                        value_name="Value"
-                    )
+                uda_failed = carestack_sorted[
+                    (carestack_sorted['isNHS'] == 1) & (carestack_sorted['isClaimFailed'] == 1)
+                    ].groupby(['Period'])['UDA'].sum().reset_index()
 
-                    # Create line chart
+                # Merge metrics for visualization
+                line_chart_data = uda_totals.rename(columns={"UDAs": "Total UDAs"}).copy()
+                line_chart_data["Claimed UDAs"] = uda_claimed["UDA"]
+                line_chart_data["Successful UDAs"] = uda_successful["UdaConfirmed"]
+                line_chart_data["Failed UDAs"] = uda_failed["UDA"]
+
+                # **Sort Data Properly**
+                if view_option == "Weekly View":
+                    # Ensure Weeks are sorted numerically (Week 1, Week 2, ...)
+                    line_chart_data['Period'] = pd.Categorical(line_chart_data['Period'], categories=labels,
+                                                               ordered=True)
+
+                elif view_option == "Monthly View":
+                    # Ensure Months are sorted correctly (Nov 2024 before Dec 2024)
+                    line_chart_data['Period'] = pd.to_datetime(line_chart_data['Period'], format='%B %Y')
+                    line_chart_data = line_chart_data.sort_values(by="Period")
+                    line_chart_data['Period'] = line_chart_data['Period'].dt.strftime(
+                        '%B %Y')  # Convert back to readable format
+
+                # Melt data for visualization
+                line_chart_data = line_chart_data.melt(
+                    id_vars=["Period"],
+                    value_vars=["Total UDAs", "Claimed UDAs", "Successful UDAs", "Failed UDAs"],
+                    var_name="Metric",
+                    value_name="Value"
+                )
+
+                # **Prepare Table Data**
+                table_data = line_chart_data.pivot(index="Metric", columns="Period", values="Value").reset_index()
+                table_data["Metric"] = table_data["Metric"].map(metric_mapping)
+
+                # Convert numeric columns
+                numeric_columns = [col for col in table_data.columns if col != "Metric"]
+                table_data[numeric_columns] = table_data[numeric_columns].apply(pd.to_numeric, errors='coerce').fillna(
+                    0)
+
+                # **Sort Table Columns Properly**
+                if view_option == "Monthly View":
+                    # Extract the period column names (Months) and sort them correctly
+                    sorted_columns = ["Metric"] + sorted(numeric_columns,
+                                                         key=lambda x: pd.to_datetime(x, format='%B %Y'))
+                    table_data = table_data[sorted_columns]  # Reorder table columns based on sorted month order
+
+                # **Toggle Table or Chart View**
+
+                if view_metrics == "Chart View":
                     fig = px.line(
                         line_chart_data,
-                        x="Week",
+                        x="Period",
                         y="Value",
                         color="Metric",
-                        title=f"UDA Weekly Trends for Plan Provider: {selected_provider}",
-                        labels={"Value": "UDAs", "Week": "Week"}
+                        title=f"UDA {view_option.split(' ')[0]} Trends for Plan Provider: {selected_provider}",
+                        labels={"Value": "UDAs", "Period": "Time Period"},
+                        line_shape="linear"
                     )
-
-                    # Display line chart
                     st.plotly_chart(fig, use_container_width=True)
 
-            elif view_option == "Monthly View":
-                with st.container(border=True):
-                # Monthly view preparation
-                    start_date = pd.Timestamp(year=selected_year, month=selected_month, day=1)
-                    end_date = (start_date + pd.offsets.MonthEnd(1)).normalize()
+                elif view_metrics == "Table View":
+                    styled_table = table_data.copy()
+                    for col in styled_table.columns[1:]:  # Skip "Metric" column
+                        styled_table[col] = styled_table[col].apply(
+                            lambda x: f"{x:.2f}" if isinstance(x, (int, float)) else x)
 
-                    # Filter for the selected month
-                    carestack_sorted = provider_data[
-                        (provider_data["CreatedIn"] == "Created in Carestack") &
-                        (provider_data["LastCompletedDate"] >= start_date) &
-                        (provider_data["LastCompletedDate"] <= end_date)
-                        ].sort_values(by="LastCompletedDate", ascending=True)
-
-                    # Generate 4-week bins
-                    bins = [start_date + pd.Timedelta(days=7 * i) for i in range(5)]  # 4 weeks
-                    labels = [f"Week {i + 1}" for i in range(4)]  # Week labels
-
-                    # Assign rows to weekly bins within the month
-                    carestack_sorted['Week'] = pd.cut(
-                        carestack_sorted['LastCompletedDate'],
-                        bins=bins,
-                        labels=labels,
-                        right=False,
-                        include_lowest=True
-                    )
-
-                    # Calculate metrics for the selected month
-                    monthly_uda_totals = carestack_sorted[
-                        (carestack_sorted['isNHS'] == 1) & (carestack_sorted['Complete'] == 1)
-                        ].groupby('Week')['UDAs'].sum().reset_index()
-
-                    monthly_uda_claimed = carestack_sorted[
-                        (carestack_sorted['Complete'] == 1) & (carestack_sorted['isNHS'] == 1)
-                        ].groupby('Week')['UDA'].sum().reset_index()
-
-                    monthly_uda_successful = carestack_sorted[
-                        (carestack_sorted['Complete'] == 1) & (carestack_sorted['isNHS'] == 1)
-                        ].groupby('Week')['UdaConfirmed'].sum().reset_index()
-
-                    monthly_uda_failed = carestack_sorted[
-                        (carestack_sorted['isNHS'] == 1) & (carestack_sorted['isClaimFailed'] == 1)
-                        ].groupby('Week')['UDA'].sum().reset_index()
-
-                    # Merge metrics for visualization
-                    line_chart_data = monthly_uda_totals.rename(columns={"UDAs": "Total UDAs"}).copy()
-                    line_chart_data["Claimed UDAs"] = monthly_uda_claimed["UDA"]
-                    line_chart_data["Successful UDAs"] = monthly_uda_successful["UdaConfirmed"]
-                    line_chart_data["Failed UDAs"] = monthly_uda_failed["UDA"]
-
-                    # Melt data for multi-line chart
-                    line_chart_data = line_chart_data.melt(
-                        id_vars=["Week"],
-                        value_vars=["Total UDAs", "Claimed UDAs", "Successful UDAs", "Failed UDAs"],
-                        var_name="Metric",
-                        value_name="Value"
-                    )
-
-                    # Create line chart
-                    fig = px.line(
-                        line_chart_data,
-                        x="Week",
-                        y="Value",
-                        color="Metric",
-                        title=f"UDA Monthly Trends for {start_date.strftime('%B %Y')} - Plan Provider: {selected_provider}",
-                        labels={"Value": "UDAs", "Week": "Week"}
-                    )
-
-                    # Display line chart
-                    st.plotly_chart(fig, use_container_width=True)
+                    styled_table.set_index("Metric", inplace=True)
+                    st.dataframe(styled_table, use_container_width=True)
 
 
 # Run the app
 if __name__ == "__main__":
     main()
-
-
-
